@@ -30,6 +30,10 @@ class LoginViewController: UIViewController {
         
         myButton.layer.cornerRadius = 6
         
+        startButton.layer.cornerRadius = 6
+        
+        stopButton.layer.cornerRadius = 6
+        
         myLabel.text = String(counter)
         
         
