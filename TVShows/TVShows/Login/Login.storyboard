@@ -18,52 +18,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ol-Kc-d56">
-                                <rect key="frame" x="137" y="120" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ol-Kc-d56">
+                                <rect key="frame" x="123.5" y="70" width="73" height="38"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="22"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="myButton:" destination="mNK-uF-s1o" eventType="touchUpInside" id="1zu-1R-kaH"/>
                                     <action selector="myButton:forEvent:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="d38-Ou-1XM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d17-sw-FaB">
-                                <rect key="frame" x="139" y="190" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d17-sw-FaB">
+                                <rect key="frame" x="135" y="148" width="50" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EmD-AN-sAc">
-                                <rect key="frame" x="150" y="429" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="p7G-NG-U5e">
+                                <rect key="frame" x="70" y="268" width="180" height="32"/>
+                                <subviews>
+                                    <button clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03g-lX-lgV">
+                                        <rect key="frame" x="0.0" y="0.0" width="43" height="32"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startAIV:forEvent:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="p19-SW-3V0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoS-aV-8LM">
+                                        <rect key="frame" x="143" y="0.0" width="37" height="32"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                        <state key="normal" title="Stop">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="stopAIV:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="wJE-vt-cee"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EmD-AN-sAc">
+                                <rect key="frame" x="141.5" y="320" width="37" height="37"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03g-lX-lgV">
-                                <rect key="frame" x="88" y="356" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startAIV:forEvent:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="p19-SW-3V0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoS-aV-8LM">
-                                <rect key="frame" x="209" y="356" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopAIV:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="wJE-vt-cee"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.3272777469" green="0.66112441200000005" blue="0.90220207249999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="EmD-AN-sAc" firstAttribute="centerX" secondItem="3Tj-MF-u4R" secondAttribute="centerX" id="1Gk-qq-wbg"/>
+                            <constraint firstItem="6ol-Kc-d56" firstAttribute="top" secondItem="Q3O-Gc-s8h" secondAttribute="top" constant="50" id="C73-GO-Z5S"/>
+                            <constraint firstItem="EmD-AN-sAc" firstAttribute="top" secondItem="p7G-NG-U5e" secondAttribute="bottom" constant="20" id="G9r-Vb-UXE"/>
                             <constraint firstItem="d17-sw-FaB" firstAttribute="top" secondItem="6ol-Kc-d56" secondAttribute="bottom" constant="40" id="J0c-t8-efy"/>
-                            <constraint firstItem="6ol-Kc-d56" firstAttribute="centerX" secondItem="3Tj-MF-u4R" secondAttribute="centerX" id="W60-W7-l78"/>
-                            <constraint firstItem="6ol-Kc-d56" firstAttribute="top" secondItem="Q3O-Gc-s8h" secondAttribute="top" constant="100" id="sev-nP-whl"/>
+                            <constraint firstItem="p7G-NG-U5e" firstAttribute="centerY" secondItem="3Tj-MF-u4R" secondAttribute="centerY" id="UHa-wg-RTr"/>
+                            <constraint firstItem="p7G-NG-U5e" firstAttribute="centerX" secondItem="3Tj-MF-u4R" secondAttribute="centerX" id="dWg-Lc-oG5"/>
+                            <constraint firstItem="6ol-Kc-d56" firstAttribute="centerX" secondItem="3Tj-MF-u4R" secondAttribute="centerX" id="hlT-7p-88W"/>
                             <constraint firstItem="d17-sw-FaB" firstAttribute="centerX" secondItem="3Tj-MF-u4R" secondAttribute="centerX" id="vkA-mb-YGB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q3O-Gc-s8h"/>
                     </view>
                     <connections>
                         <outlet property="myActivityIndicator" destination="EmD-AN-sAc" id="nB4-t3-yaH"/>
+                        <outlet property="myButton" destination="6ol-Kc-d56" id="rkD-2E-7Wx"/>
                         <outlet property="myLabel" destination="d17-sw-FaB" id="rYZ-Mw-Skg"/>
                         <outlet property="startButton" destination="03g-lX-lgV" id="76d-T7-Jgd"/>
                         <outlet property="stopButton" destination="WoS-aV-8LM" id="7GW-L9-dxo"/>
@@ -72,7 +91,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgQ-zh-1xO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mNK-uF-s1o" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-566" y="-2136"/>
+            <point key="canvasLocation" x="-566.25" y="-2136.9718309859154"/>
         </scene>
     </scenes>
 </document>

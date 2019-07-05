@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var myButton: UIButton!
     
     @IBOutlet weak var myLabel: UILabel!
     
@@ -19,13 +20,15 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
     
-    // numer of clicks stored in counter
+    // number of clicks stored in counter
     var counter = 0
     
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        myButton.layer.cornerRadius = 6
         
         myLabel.text = String(counter)
         
