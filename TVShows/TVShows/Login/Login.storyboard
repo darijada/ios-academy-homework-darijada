@@ -32,6 +32,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EmD-AN-sAc">
+                                <rect key="frame" x="150" y="429" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03g-lX-lgV">
+                                <rect key="frame" x="88" y="356" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startAIV:forEvent:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="p19-SW-3V0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WoS-aV-8LM">
+                                <rect key="frame" x="209" y="356" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopAIV:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="wJE-vt-cee"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -43,7 +63,10 @@
                         <viewLayoutGuide key="safeArea" id="Q3O-Gc-s8h"/>
                     </view>
                     <connections>
+                        <outlet property="myActivityIndicator" destination="EmD-AN-sAc" id="nB4-t3-yaH"/>
                         <outlet property="myLabel" destination="d17-sw-FaB" id="rYZ-Mw-Skg"/>
+                        <outlet property="startButton" destination="03g-lX-lgV" id="76d-T7-Jgd"/>
+                        <outlet property="stopButton" destination="WoS-aV-8LM" id="7GW-L9-dxo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgQ-zh-1xO" userLabel="First Responder" sceneMemberID="firstResponder"/>
