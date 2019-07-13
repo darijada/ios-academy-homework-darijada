@@ -30,8 +30,7 @@
                                             <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="myButton:" destination="mNK-uF-s1o" eventType="touchUpInside" id="1zu-1R-kaH"/>
-                                            <action selector="myButton:forEvent:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="d38-Ou-1XM"/>
+                                            <action selector="touchCounterButton" destination="4YF-Sd-eKs" eventType="touchUpInside" id="Eht-ZX-Uay"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d17-sw-FaB">
@@ -51,7 +50,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="startAIV:forEvent:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="p19-SW-3V0"/>
+                                                    <action selector="startTouchButton" destination="4YF-Sd-eKs" eventType="touchUpInside" id="ttp-rC-BlX"/>
                                                 </connections>
                                             </button>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EmD-AN-sAc">
@@ -66,7 +65,7 @@
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="stopAIV:" destination="4YF-Sd-eKs" eventType="touchUpInside" id="wJE-vt-cee"/>
+                                                    <action selector="stopTouchButton" destination="4YF-Sd-eKs" eventType="touchUpInside" id="dB5-sc-hBY"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -84,14 +83,13 @@
                     </view>
                     <connections>
                         <outlet property="myActivityIndicator" destination="EmD-AN-sAc" id="nB4-t3-yaH"/>
-                        <outlet property="myButton" destination="6ol-Kc-d56" id="rkD-2E-7Wx"/>
                         <outlet property="myLabel" destination="d17-sw-FaB" id="rYZ-Mw-Skg"/>
                         <outlet property="startButton" destination="03g-lX-lgV" id="76d-T7-Jgd"/>
                         <outlet property="stopButton" destination="WoS-aV-8LM" id="7GW-L9-dxo"/>
+                        <outlet property="touchButton" destination="6ol-Kc-d56" id="01x-Fz-Nrg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wgQ-zh-1xO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="mNK-uF-s1o" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-566.25" y="-2136.9718309859154"/>
         </scene>
