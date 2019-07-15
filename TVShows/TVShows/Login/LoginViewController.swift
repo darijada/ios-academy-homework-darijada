@@ -11,7 +11,7 @@ import SVProgressHUD
 import Alamofire
 import CodableAlamofire
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     // MARK: - Outlets
     
