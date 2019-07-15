@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420DBE4422DBE6510005F14C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420DBE4322DBE6510005F14C /* HomeViewController.swift */; };
+		420DBE4622DBE6B70005F14C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420DBE4522DBE6B70005F14C /* Home.storyboard */; };
 		425A787222CE53EB0083E67E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A787122CE53EB0083E67E /* AppDelegate.swift */; };
 		425A787422CE53EB0083E67E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A787322CE53EB0083E67E /* ViewController.swift */; };
 		425A787722CE53EB0083E67E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425A787522CE53EB0083E67E /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		04F77EC1A913732FF33520B2 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0776866AA0E7B514899106A5 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
+		420DBE4322DBE6510005F14C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		420DBE4522DBE6B70005F14C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		425A786E22CE53EB0083E67E /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425A787122CE53EB0083E67E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		425A787322CE53EB0083E67E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 			children = (
 				425A787122CE53EB0083E67E /* AppDelegate.swift */,
 				425A787322CE53EB0083E67E /* ViewController.swift */,
+				420DBE4322DBE6510005F14C /* HomeViewController.swift */,
+				420DBE4522DBE6B70005F14C /* Home.storyboard */,
 				425A787522CE53EB0083E67E /* Main.storyboard */,
 				425A787822CE53EC0083E67E /* Assets.xcassets */,
 				425A787A22CE53EC0083E67E /* LaunchScreen.storyboard */,
@@ -85,7 +91,6 @@
 				0776866AA0E7B514899106A5 /* Pods-TVShows.debug.xcconfig */,
 				D9F00578A2A923A6F340D104 /* Pods-TVShows.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -100,6 +105,7 @@
 				425A786A22CE53EB0083E67E /* Sources */,
 				425A786B22CE53EB0083E67E /* Frameworks */,
 				425A786C22CE53EB0083E67E /* Resources */,
+				8A3E4FE6584A7923E2F9000F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,12 +157,30 @@
 				425A787C22CE53EC0083E67E /* LaunchScreen.storyboard in Resources */,
 				425A787922CE53EC0083E67E /* Assets.xcassets in Resources */,
 				425A787722CE53EB0083E67E /* Main.storyboard in Resources */,
+				420DBE4622DBE6B70005F14C /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8A3E4FE6584A7923E2F9000F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TVShows/Pods-TVShows-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TVShows/Pods-TVShows-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TVShows/Pods-TVShows-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D6826BE7E29D5368C303E7FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +212,7 @@
 			files = (
 				425A787422CE53EB0083E67E /* ViewController.swift in Sources */,
 				425A787222CE53EB0083E67E /* AppDelegate.swift in Sources */,
+				420DBE4422DBE6510005F14C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
