@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lvx-eX-61q">
-                                                <rect key="frame" x="57" y="150" width="300" height="365"/>
+                                                <rect key="frame" x="57" y="180" width="300" height="365"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gmc-og-If0">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
@@ -138,7 +138,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Lvx-eX-61q" firstAttribute="top" secondItem="EaI-VM-J4k" secondAttribute="top" constant="150" id="2y7-iv-aid"/>
+                                            <constraint firstItem="Lvx-eX-61q" firstAttribute="top" secondItem="EaI-VM-J4k" secondAttribute="top" constant="180" id="2y7-iv-aid"/>
                                             <constraint firstItem="Lvx-eX-61q" firstAttribute="centerX" secondItem="EaI-VM-J4k" secondAttribute="centerX" id="XGQ-9Y-P4h"/>
                                             <constraint firstAttribute="height" constant="500" id="wIT-bW-bpD"/>
                                         </constraints>
