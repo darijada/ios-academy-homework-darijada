@@ -139,7 +139,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Lvx-eX-61q" firstAttribute="top" secondItem="EaI-VM-J4k" secondAttribute="top" constant="150" id="2y7-iv-aid"/>
-                                            <constraint firstItem="Lvx-eX-61q" firstAttribute="centerX" secondItem="EaI-VM-J4k" secondAttribute="centerX" id="LqT-OH-nb3"/>
+                                            <constraint firstItem="Lvx-eX-61q" firstAttribute="centerX" secondItem="EaI-VM-J4k" secondAttribute="centerX" id="XGQ-9Y-P4h"/>
                                             <constraint firstAttribute="height" constant="500" id="wIT-bW-bpD"/>
                                         </constraints>
                                     </view>
@@ -154,11 +154,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LmA-en-cFN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3IE-xF-dlI"/>
+                            <constraint firstItem="LmA-en-cFN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3IE-xF-dlI"/>
                             <constraint firstItem="LmA-en-cFN" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="FEq-wZ-qcZ"/>
                             <constraint firstAttribute="bottom" secondItem="LmA-en-cFN" secondAttribute="bottom" id="Q6n-oP-c3d"/>
                             <constraint firstItem="LmA-en-cFN" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Wpm-gI-BpN"/>
-                            <constraint firstItem="LmA-en-cFN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Yqe-I0-TfE"/>
+                            <constraint firstItem="LmA-en-cFN" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="Yqe-I0-TfE"/>
                             <constraint firstItem="EaI-VM-J4k" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="km8-bi-nvu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
