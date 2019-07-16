@@ -69,15 +69,18 @@
                                                             <constraint firstAttribute="height" constant="1" id="EyJ-py-3mc"/>
                                                         </constraints>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="5Vi-px-K5A">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="5Vi-px-K5A">
                                                         <rect key="frame" x="0.0" y="220" width="300" height="31"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="40" placeholderIntrinsicHeight="31" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5N-IJ-vKY">
-                                                                <rect key="frame" x="0.0" y="0.0" width="77.5" height="31"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5N-IJ-vKY">
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="31"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="h3d-OK-is9"/>
+                                                                </constraints>
                                                                 <state key="normal" title="Button" image="ic-checkbox-empty"/>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzm-gF-IUG">
-                                                                <rect key="frame" x="80.5" y="0.0" width="219.5" height="31"/>
+                                                                <rect key="frame" x="43" y="0.0" width="257" height="31"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
