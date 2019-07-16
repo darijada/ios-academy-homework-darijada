@@ -41,10 +41,6 @@ final class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction private func logInButtonActionHandler() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
-        navigationController?.pushViewController(viewController, animated: true)
-        
         _loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
 
@@ -52,8 +48,15 @@ final class LoginViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
         navigationController?.pushViewController(viewController, animated: true)
-        
         _alamofireCodableRegisterUserWith(email: emailTextField.text!, password: passwordTextField.text!)
+    }
+    
+    private func loginFailureAlert(){
+        let alert = UIAlertController(title: "Login failure alert", message: "Incorrect Email or Password!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -80,7 +83,7 @@ private extension LoginViewController {
                 switch response.result {
                 case .success(let user):
                    print("Success: \(user)")
-                    SVProgressHUD.showSuccess(withStatus: "User registered!")
+                   SVProgressHUD.showSuccess(withStatus: "User registered!")
                     
                 case .failure(let error):
                     print("API failure: \(error)")
@@ -110,10 +113,14 @@ private extension LoginViewController {
                 switch dataResponse.result {
                 case .success(let response):
                     self?._infoLabel = "Success: \(response)"
+                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                    let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
+                    self?.navigationController?.pushViewController(viewController, animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
                     self?._infoLabel = "API failure: \(error)"
-                    SVProgressHUD.showError(withStatus: "Incorrect Email or Password!")
+                    SVProgressHUD.dismiss()
+                    self?.loginFailureAlert()
                 }
         }
     }
