@@ -181,7 +181,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVShowTableViewCell" rowHeight="100" id="d3N-z7-Tta">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVShowTableViewCell" rowHeight="100" id="d3N-z7-Tta" customClass="TVShowTableViewCell" customModule="TVShows" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d3N-z7-Tta" id="dgy-Ud-2Ed">
@@ -215,7 +215,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="tvShowTitle" destination="IDC-xj-qBB" id="yJc-MR-8zz"/>
+                                    <outlet property="thumbnail" destination="wMr-Fk-F0o" id="vCC-Tc-56u"/>
+                                    <outlet property="title" destination="IDC-xj-qBB" id="1CO-KA-EDw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
