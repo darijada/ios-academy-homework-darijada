@@ -35,7 +35,6 @@ final class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     // MARK: - Actions
@@ -45,9 +44,6 @@ final class LoginViewController: UIViewController {
     }
 
     @IBAction private func createAccountButtonActionHandler() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
-        navigationController?.pushViewController(viewController, animated: true)
         _alamofireCodableRegisterUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
@@ -109,12 +105,12 @@ private extension LoginViewController {
                 parameters: parameters,
                 encoding: JSONEncoding.default)
             .validate()
-            .responseJSON { [weak self] dataResponse in
-                switch dataResponse.result {
-                case .success(let response):
-                    self?._infoLabel = "Success: \(response)"
-                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                    let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
+            .responseDecodableObject(keyPath: "data", completionHandler: { [weak self] (response: DataResponse<LoginData>) in
+                switch response.result {
+                case .success(let loginData):
+                    let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                    let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController") as! HomeViewController
+                    viewController.token = loginData.token
                     self?.navigationController?.pushViewController(viewController, animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
@@ -122,6 +118,6 @@ private extension LoginViewController {
                     SVProgressHUD.dismiss()
                     self?.loginFailureAlert()
                 }
-        }
+            })
     }
 }

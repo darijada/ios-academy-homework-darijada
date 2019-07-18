@@ -82,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				425A787A22CE53EC0083E67E /* LaunchScreen.storyboard */,
+				425A787522CE53EB0083E67E /* Login.storyboard */,
 				425A787322CE53EB0083E67E /* LoginViewController.swift */,
 				428D8D3722DD00A900887535 /* User.swift */,
 			);
@@ -91,7 +92,6 @@
 		42EFAB7E22DE91B8005EDCCA /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				425A787522CE53EB0083E67E /* Login.storyboard */,
 				420DBE4522DBE6B70005F14C /* Home.storyboard */,
 				42EFAB8422DEA0CB005EDCCA /* TVShowTableViewCell.swift */,
 				42EFAB7C22DE8653005EDCCA /* HomeViewController.swift */,

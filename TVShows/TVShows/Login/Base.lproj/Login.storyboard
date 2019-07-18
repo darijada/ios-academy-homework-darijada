@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Etd-L5-Sl2">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,17 +15,17 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="LoginViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LmA-en-cFN">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" restorationIdentifier="ContainerView" translatesAutoresizingMaskIntoConstraints="NO" id="EaI-VM-J4k">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lvx-eX-61q">
-                                                <rect key="frame" x="57" y="180" width="300" height="367"/>
+                                                <rect key="frame" x="37.5" y="180" width="300" height="367"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Gmc-og-If0">
                                                         <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
@@ -172,70 +172,13 @@
             </objects>
             <point key="canvasLocation" x="1042.4000000000001" y="18.440779610194905"/>
         </scene>
-        <!--Home-->
-        <scene sceneID="21d-Gw-O1Q">
-            <objects>
-                <viewController storyboardIdentifier="HomeViewController" title="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RBZ-dw-Yex" customClass="HomeViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="OOr-zj-fQh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVShowTableViewCell" rowHeight="100" id="d3N-z7-Tta">
-                                <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d3N-z7-Tta" id="dgy-Ud-2Ed">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-9t-3zI">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="99.5"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_placeholder_png_698156" translatesAutoresizingMaskIntoConstraints="NO" id="wMr-Fk-F0o" userLabel="Thumbnail">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="99.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="100" id="hTU-Xj-ZPg"/>
-                                                        <constraint firstAttribute="width" constant="120" id="uUp-7h-5Es"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDC-xj-qBB" userLabel="Title">
-                                                    <rect key="frame" x="140" y="0.0" width="234" height="99.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="FeI-9t-3zI" secondAttribute="trailing" constant="20" id="76W-A2-XnB"/>
-                                        <constraint firstItem="FeI-9t-3zI" firstAttribute="leading" secondItem="dgy-Ud-2Ed" secondAttribute="leading" constant="20" id="PC6-6E-TTg"/>
-                                        <constraint firstItem="FeI-9t-3zI" firstAttribute="top" secondItem="dgy-Ud-2Ed" secondAttribute="top" id="wCt-Qj-Zc9"/>
-                                        <constraint firstAttribute="bottom" secondItem="FeI-9t-3zI" secondAttribute="bottom" id="zmw-dy-ePt"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="tvShowTitle" destination="IDC-xj-qBB" id="yJc-MR-8zz"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Shows" id="NNL-nV-Aqk" userLabel="Shows"/>
-                    <connections>
-                        <outlet property="showTableView" destination="OOr-zj-fQh" id="pDo-cp-IA0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ejl-vX-nTG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1933" y="19"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7SP-Pg-OSK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Etd-L5-Sl2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hlS-gu-yhS">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -250,7 +193,6 @@
     </scenes>
     <resources>
         <image name="ic-checkbox-empty" width="24" height="24"/>
-        <image name="image_placeholder_png_698156" width="600" height="400"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>
