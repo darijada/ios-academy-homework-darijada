@@ -29,22 +29,8 @@ final class LoginViewController: UIViewController {
         logInButton.layer.cornerRadius = 6
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    }
-    
-    // MARK: - Actions
-    
-    @IBAction private func logInButtonActionHandler() {
-        _loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
-    }
-
-    @IBAction private func createAccountButtonActionHandler() {
-        _alamofireCodableRegisterUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     private func loginFailureAlert(){
@@ -54,20 +40,33 @@ final class LoginViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Actions
+    
+    @IBAction private func logInButtonActionHandler() {
+        guard let userEmail = emailTextField.text else { return }
+        guard let userPassword = passwordTextField.text else { return }
+        loginUser(email: userEmail, password: userPassword)
+   }
+
+    @IBAction private func createAccountButtonActionHandler() {
+        guard let userEmail = emailTextField.text else { return }
+        guard let userPassword = passwordTextField.text else { return }
+        createUserAccount(email: userEmail, password: userPassword)    }
+    
 }
 
     // MARK: - Register + automatic JSON parsing
 
 private extension LoginViewController {
     
-    func _alamofireCodableRegisterUserWith(email: String, password: String) {
+    func createUserAccount(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
             "email": email,
             "password": password
         ]
-        
         Alamofire
             .request(
                 "https://api.infinum.academy/api/users",
@@ -83,6 +82,7 @@ private extension LoginViewController {
                     
                 case .failure(let error):
                     print("API failure: \(error)")
+                    SVProgressHUD.showError(withStatus: "Email or Password field is required!")
                 }
         }
     }
@@ -92,7 +92,7 @@ private extension LoginViewController {
 
 private extension LoginViewController {
     
-    func _loginUserWith(email: String, password: String) {
+    func loginUser(email: String, password: String) {
         SVProgressHUD.show()
         let parameters: [String: String] = [
             "email": email,
