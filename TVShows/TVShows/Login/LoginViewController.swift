@@ -29,46 +29,44 @@ final class LoginViewController: UIViewController {
         logInButton.layer.cornerRadius = 6
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    private func goToHomeViewController(){
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     // MARK: - Actions
     
     @IBAction private func logInButtonActionHandler() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
-        navigationController?.pushViewController(viewController, animated: true)
-        
-        _loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
+        goToHomeViewController()
+        guard let userEmail = emailTextField.text else { return }
+        guard let userPassword = passwordTextField.text else { return }
+        loginUser(email: userEmail, password: userPassword)
     }
 
     @IBAction private func createAccountButtonActionHandler() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
-        navigationController?.pushViewController(viewController, animated: true)
-        
-        _alamofireCodableRegisterUserWith(email: emailTextField.text!, password: passwordTextField.text!)
+        goToHomeViewController()
+        guard let userEmail = emailTextField.text else { return }
+        guard let userPassword = passwordTextField.text else { return }
+        createUserAccount(email: userEmail, password: userPassword)
     }
 }
 
     // MARK: - Register + automatic JSON parsing
 
 private extension LoginViewController {
-    
-    func _alamofireCodableRegisterUserWith(email: String, password: String) {
+    func createUserAccount(email: String, password: String) {
         SVProgressHUD.show()
         
         let parameters: [String: String] = [
             "email": email,
             "password": password
         ]
-        
         Alamofire
             .request(
                 "https://api.infinum.academy/api/users",
@@ -81,9 +79,9 @@ private extension LoginViewController {
                 case .success(let user):
                    print("Success: \(user)")
                     SVProgressHUD.showSuccess(withStatus: "User registered!")
-                    
                 case .failure(let error):
                     print("API failure: \(error)")
+                    SVProgressHUD.showError(withStatus: "Email or Password field is required!")
                 }
         }
     }
@@ -92,8 +90,7 @@ private extension LoginViewController {
     // MARK: - Login + automatic JSON parsing
 
 private extension LoginViewController {
-    
-    func _loginUserWith(email: String, password: String) {
+    func loginUser(email: String, password: String) {
         SVProgressHUD.show()
         let parameters: [String: String] = [
             "email": email,
