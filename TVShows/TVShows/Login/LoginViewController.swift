@@ -79,7 +79,6 @@ private extension LoginViewController {
                 case .success(let user):
                    print("Success: \(user)")
                    SVProgressHUD.showSuccess(withStatus: "User registered!")
-                    
                 case .failure(let error):
                     print("API failure: \(error)")
                     SVProgressHUD.showError(withStatus: "Email or Password field is required!")
@@ -114,7 +113,7 @@ private extension LoginViewController {
                     self?.navigationController?.pushViewController(viewController, animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
-                    self?._infoLabel = "API failure: \(error)"
+                    print("API failure: \(error)")
                     SVProgressHUD.dismiss()
                     self?.loginFailureAlert()
                 }

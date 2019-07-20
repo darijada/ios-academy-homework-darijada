@@ -13,6 +13,9 @@
 		425A787722CE53EB0083E67E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425A787522CE53EB0083E67E /* Login.storyboard */; };
 		425A787922CE53EC0083E67E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425A787822CE53EC0083E67E /* Assets.xcassets */; };
 		425A787C22CE53EC0083E67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425A787A22CE53EC0083E67E /* LaunchScreen.storyboard */; };
+		425B514022E32BB0000DE82A /* ShowDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B513F22E32BB0000DE82A /* ShowDetailsViewController.swift */; };
+		425B514222E32BC2000DE82A /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425B514122E32BC2000DE82A /* Details.storyboard */; };
+		425B514622E352A5000DE82A /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425B514522E352A5000DE82A /* EpisodeTableViewCell.swift */; };
 		428D8D3822DD00A900887535 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D8D3722DD00A900887535 /* User.swift */; };
 		42EFAB7D22DE8653005EDCCA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EFAB7C22DE8653005EDCCA /* HomeViewController.swift */; };
 		42EFAB8522DEA0CB005EDCCA /* TVShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EFAB8422DEA0CB005EDCCA /* TVShowTableViewCell.swift */; };
@@ -30,6 +33,9 @@
 		425A787822CE53EC0083E67E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		425A787B22CE53EC0083E67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425A787D22CE53EC0083E67E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		425B513F22E32BB0000DE82A /* ShowDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailsViewController.swift; sourceTree = "<group>"; };
+		425B514122E32BC2000DE82A /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
+		425B514522E352A5000DE82A /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		428D8D3722DD00A900887535 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42EFAB7C22DE8653005EDCCA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		42EFAB8422DEA0CB005EDCCA /* TVShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowTableViewCell.swift; sourceTree = "<group>"; };
@@ -72,10 +78,22 @@
 				428D8D3622DCBD3200887535 /* Login */,
 				425A787122CE53EB0083E67E /* AppDelegate.swift */,
 				42EFAB7E22DE91B8005EDCCA /* Home */,
+				425B513E22E32B95000DE82A /* Details */,
 				42EFAB8322DE99EF005EDCCA /* Resources */,
 				425A787D22CE53EC0083E67E /* Info.plist */,
 			);
 			path = TVShows;
+			sourceTree = "<group>";
+		};
+		425B513E22E32B95000DE82A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				425B513F22E32BB0000DE82A /* ShowDetailsViewController.swift */,
+				425B514522E352A5000DE82A /* EpisodeTableViewCell.swift */,
+				425B514122E32BC2000DE82A /* Details.storyboard */,
+			);
+			name = Details;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		428D8D3622DCBD3200887535 /* Login */ = {
@@ -184,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425B514222E32BC2000DE82A /* Details.storyboard in Resources */,
 				425A787C22CE53EC0083E67E /* LaunchScreen.storyboard in Resources */,
 				425A787922CE53EC0083E67E /* Assets.xcassets in Resources */,
 				425A787722CE53EB0083E67E /* Login.storyboard in Resources */,
@@ -241,9 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				428D8D3822DD00A900887535 /* User.swift in Sources */,
+				425B514622E352A5000DE82A /* EpisodeTableViewCell.swift in Sources */,
 				425A787422CE53EB0083E67E /* LoginViewController.swift in Sources */,
 				42EFAB8522DEA0CB005EDCCA /* TVShowTableViewCell.swift in Sources */,
 				425A787222CE53EB0083E67E /* AppDelegate.swift in Sources */,
+				425B514022E32BB0000DE82A /* ShowDetailsViewController.swift in Sources */,
 				42EFAB7D22DE8653005EDCCA /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

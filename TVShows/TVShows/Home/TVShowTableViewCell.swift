@@ -11,8 +11,8 @@ import UIKit
 final class TVShowTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var thumbnail: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -22,6 +22,24 @@ struct TVShowItem: Codable {
     }
 }
 
+struct ShowDetails: Codable {
+    let type: String
+    let title: String
+    let description: String
+    let id: String
+    let likesCount: Int
+    //let imageUrl: String
+    
+    enum CodingKeys: String, CodingKey {
+        case type
+        case title
+        case description
+        case id = "_id"
+        case likesCount
+        //case imageUrl
+    }
+}
+
 final class HomeViewController: UIViewController {
     
     @IBOutlet private weak var showTableView: UITableView!
@@ -62,6 +80,35 @@ private extension HomeViewController {
                 SVProgressHUD.dismiss()
         }
     }
+    
+    func showEpisodes(id: String) {
+        SVProgressHUD.show()
+        let parameters: [String: String] = [
+            "id": id
+        ]
+        Alamofire
+            .request(
+                "https://api.infinum.academy/api/shows/" + id,
+                method: .get,
+                parameters: parameters,
+                encoding: JSONEncoding.default)
+            .validate()
+            .responseDecodableObject(keyPath: "data") {(response: DataResponse<ShowDetails>) in
+                switch response.result {
+                case .success(let tvShowDetails):
+                    let storyboard = UIStoryboard(name: "Details", bundle: nil)
+                    let viewController = storyboard.instantiateViewController( withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
+                    viewController.token = self.token
+                    viewController.id = tvShowDetails.id
+                   viewController.showTitleInput = tvShowDetails.title
+                    viewController.showDescriptionInput = tvShowDetails.description
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                case .failure(let error):
+                    print("API failure: \(error)")
+                }
+                SVProgressHUD.dismiss()
+            }
+    }
 }
 
 // MARK: - UITableView
@@ -69,7 +116,9 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showTableView.deselectRow(at: indexPath, animated: true)
         let item = items[indexPath.row]
+        let itemId = item.id
         print("Selected Item: \(item)")
+        showEpisodes(id: itemId)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
@@ -102,8 +151,7 @@ extension HomeViewController: UITableViewDataSource {
 //MARK: - Private
 private extension HomeViewController {
     func setupTableView() {
-        showTableView.estimatedRowHeight = 110
-        showTableView.rowHeight = UITableView.automaticDimension
+        showTableView.estimatedRowHeight = 60
         showTableView.tableFooterView = UIView()
         showTableView.delegate = self
         showTableView.dataSource = self
