@@ -71,6 +71,15 @@ extension HomeViewController: UITableViewDelegate {
         let item = items[indexPath.row]
         print("Selected Item: \(item)")
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    {
+        let deleteCell = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexpath) in
+            self.items.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+        return [deleteCell]
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -89,12 +98,14 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
+    /*
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
     }
+ */
 }
 
 //MARK: - Private
