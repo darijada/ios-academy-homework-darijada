@@ -33,6 +33,7 @@ class ShowDetailsViewController: UIViewController {
 
     // MARK: Outlets
     
+    @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet private weak var showNumberOfEpisodes: UILabel!
     @IBOutlet private weak var showEpisodeNumber: UILabel!
     @IBOutlet private weak var seasonEpisodeNumber: UILabel!
@@ -78,7 +79,7 @@ class ShowDetailsViewController: UIViewController {
 private extension ShowDetailsViewController {
     func showEpisodes() {
         SVProgressHUD.show()
-        let headers = ["Authorization": token!]
+        let headers = ["Authorization": "token \(String(describing: self.token))"]
         Alamofire
             .request(
                 "https://api.infinum.academy/api/shows/" + id + "/episodes",
@@ -91,6 +92,10 @@ private extension ShowDetailsViewController {
                 case .success(let tvShowEpisodes):
                     print("Success: \(tvShowEpisodes)")
                     self.episodes = tvShowEpisodes
+                    print(tvShowEpisodes.count)
+                    self.showNumberOfEpisodes.text = "Episodes " + " \(tvShowEpisodes.count)"
+                   
+                   
                     self.episodeTableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")
@@ -135,7 +140,6 @@ private extension ShowDetailsViewController {
 }
 
 extension ShowDetailsViewController: addEpViewControllerDelegate {
-
     func didAddNewEpisode() {
         showEpisodes()
     }

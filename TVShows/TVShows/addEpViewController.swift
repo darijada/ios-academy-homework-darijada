@@ -49,7 +49,7 @@ class addEpViewController: UIViewController {
     }
     
     private func createEpisodeFailureAlert(){
-        let alert = UIAlertController(title: "Login failure alert", message: "All fields are required!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Adding episode failure alert", message: "All fields are required!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")
         }))
@@ -67,8 +67,8 @@ private extension addEpViewController{
             SVProgressHUD.dismiss()
         }
         else {
-        guard let token = token else { return }
-        let headers = ["Authorization": token]
+            guard let token = self.token else { return }
+            let headers = ["Authorization": token]
         let parameters: [String: String] = [
             "showId": showId!,
             "title": title,

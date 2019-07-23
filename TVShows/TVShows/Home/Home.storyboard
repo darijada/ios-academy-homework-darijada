@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NyU-J9-RQy">
-                                <rect key="frame" x="0.0" y="74" width="414" height="788"/>
+                                <rect key="frame" x="0.0" y="82" width="414" height="731"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TVShowTableViewCell" rowHeight="100" id="6go-eD-tpa" customClass="TVShowTableViewCell" customModule="TVShows" customModuleProvider="target">
@@ -30,10 +30,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6HS-Z1-BVJ">
-                                                    <rect key="frame" x="20" y="0.0" width="374" height="94.5"/>
+                                                    <rect key="frame" x="20" y="5" width="374" height="89.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oKL-at-1B1" userLabel="Thumbnail">
-                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="94.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="89.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" priority="999" constant="100" id="0xx-6r-So8"/>
                                                                 <constraint firstAttribute="width" constant="120" id="A9o-M8-VXg"/>
@@ -41,7 +41,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKj-PO-ZJW" userLabel="Title">
-                                                            <rect key="frame" x="140" y="0.0" width="234" height="94.5"/>
+                                                            <rect key="frame" x="140" y="0.0" width="234" height="89.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                                 <constraint firstItem="6HS-Z1-BVJ" firstAttribute="leading" secondItem="gSh-8T-kCY" secondAttribute="leading" constant="20" id="5Mc-uF-OLh"/>
                                                 <constraint firstAttribute="bottom" secondItem="6HS-Z1-BVJ" secondAttribute="bottom" constant="5" id="Koj-si-W6v"/>
                                                 <constraint firstAttribute="trailing" secondItem="6HS-Z1-BVJ" secondAttribute="trailing" constant="20" id="Kvl-hi-Vzv"/>
-                                                <constraint firstItem="6HS-Z1-BVJ" firstAttribute="top" secondItem="gSh-8T-kCY" secondAttribute="top" id="u3J-cf-BPK"/>
+                                                <constraint firstItem="6HS-Z1-BVJ" firstAttribute="top" secondItem="gSh-8T-kCY" secondAttribute="top" constant="5" id="u3J-cf-BPK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -66,17 +66,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJ8-Lg-HKs">
+                                <rect key="frame" x="0.0" y="33" width="414" height="44"/>
+                                <items>
+                                    <navigationItem id="Qp0-iM-WWt">
+                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="tfp-7z-wGw">
+                                            <color key="tintColor" red="0.99866133930000001" green="0.45894449949999999" blue="0.54898977280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NyU-J9-RQy" firstAttribute="top" secondItem="BJ8-Lg-HKs" secondAttribute="bottom" constant="5" id="96F-NI-oi6"/>
                             <constraint firstItem="NyU-J9-RQy" firstAttribute="leading" secondItem="HHD-9i-Rdq" secondAttribute="leading" id="GWO-Am-E5G"/>
-                            <constraint firstItem="NyU-J9-RQy" firstAttribute="top" secondItem="HHD-9i-Rdq" secondAttribute="top" constant="30" id="PQs-dU-waW"/>
+                            <constraint firstItem="BJ8-Lg-HKs" firstAttribute="leading" secondItem="HHD-9i-Rdq" secondAttribute="leading" id="UKw-fh-Y1B"/>
+                            <constraint firstItem="NyU-J9-RQy" firstAttribute="top" secondItem="BJ8-Lg-HKs" secondAttribute="bottom" constant="5" id="YrD-Pr-jMI"/>
                             <constraint firstItem="HHD-9i-Rdq" firstAttribute="trailing" secondItem="NyU-J9-RQy" secondAttribute="trailing" id="dMp-Jj-201"/>
+                            <constraint firstItem="BJ8-Lg-HKs" firstAttribute="trailing" secondItem="HHD-9i-Rdq" secondAttribute="trailing" id="fOc-6G-07h"/>
                             <constraint firstItem="HHD-9i-Rdq" firstAttribute="bottom" secondItem="NyU-J9-RQy" secondAttribute="bottom" id="lAV-f0-dEZ"/>
+                            <constraint firstItem="BJ8-Lg-HKs" firstAttribute="trailing" secondItem="HHD-9i-Rdq" secondAttribute="trailing" id="oKh-fZ-4NI"/>
+                            <constraint firstItem="BJ8-Lg-HKs" firstAttribute="top" secondItem="zN7-9k-3gh" secondAttribute="top" constant="33" id="pkS-WH-PMt"/>
+                            <constraint firstItem="BJ8-Lg-HKs" firstAttribute="leading" secondItem="HHD-9i-Rdq" secondAttribute="leading" id="xhz-th-Jxc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HHD-9i-Rdq"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="logoutButton" destination="tfp-7z-wGw" id="878-R3-cgx"/>
                         <outlet property="showTableView" destination="NyU-J9-RQy" id="FWx-dp-MLr"/>
                     </connections>
                 </viewController>

@@ -29,6 +29,7 @@ struct ShowDetails: Codable {
     let description: String
     let id: String
     let likesCount: Int
+    let imageUrl: String
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -36,6 +37,7 @@ struct ShowDetails: Codable {
         case description
         case id = "_id"
         case likesCount
+        case imageUrl
     }
 }
 
@@ -44,6 +46,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet private weak var showTableView: UITableView!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     private var items = [TVShowItem]()
     var token: String!
 
@@ -53,8 +56,21 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         // REMOVE back button?
         navigationItem.hidesBackButton = true
+    
         setupTableView()
         apiCallShows()
+        logoutButton.action = #selector(logoutActionHandler)
+    }
+    
+    @objc private func logoutActionHandler() {
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "password")
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController = storyboard.instantiateViewController( withIdentifier: "LoginViewController") as! LoginViewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        let share = UIApplication.shared.delegate as? AppDelegate
+        share?.window?.rootViewController = navigationController
+        share?.window?.makeKeyAndVisible()
     }
 }
 
@@ -62,7 +78,7 @@ private extension HomeViewController {
     
     func apiCallShows() {
         SVProgressHUD.show()
-        let headers = ["Authorization": token!]
+        let headers = ["Authorization": "token \(String(describing: self.token))"]
         Alamofire
             .request(
                 "https://api.infinum.academy/api/shows",

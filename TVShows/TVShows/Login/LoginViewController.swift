@@ -20,7 +20,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var checkmarkButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    private var _infoLabel: String = "Unknown"
+    private var tapped = false
+    //private var _infoLabel: String = "Unknown"
     
     // MARK: - Lifecycle methods
     
@@ -41,6 +42,10 @@ final class LoginViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
   
+    @IBAction func rememberMeTapped(_ sender: Any) {
+        self.tapped = true
+        print("Remember me!")
+    }
     
     // MARK: - Actions
     
@@ -54,7 +59,6 @@ final class LoginViewController: UIViewController {
         guard let userEmail = emailTextField.text else { return }
         guard let userPassword = passwordTextField.text else { return }
         createUserAccount(email: userEmail, password: userPassword)    }
-    
 }
 
     // MARK: - Register + automatic JSON parsing
@@ -80,6 +84,9 @@ private extension LoginViewController {
                 case .success(let user):
                    print("Success: \(user)")
                    SVProgressHUD.showSuccess(withStatus: "User registered!")
+                   let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                   let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController") as! HomeViewController
+                   self.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let error):
                     print("API failure: \(error)")
                     SVProgressHUD.dismiss()
@@ -111,7 +118,15 @@ private extension LoginViewController {
                 case .success(let loginData):
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController") as! HomeViewController
+                    
                     viewController.token = loginData.token
+                    
+                    if self?.tapped == true {
+                        guard let userEmail = self?.emailTextField.text else { return }
+                        guard let userPassword = self?.passwordTextField.text else { return }
+                        UserDefaults.standard.set(userEmail, forKey: "email")
+                        UserDefaults.standard.set(userPassword, forKey: "password")
+                    }
                     self?.navigationController?.pushViewController(viewController, animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
@@ -120,13 +135,11 @@ private extension LoginViewController {
                     //self?.loginFailureAlert()
                 }
                 SVProgressHUD.dismiss()
-
             })
     }
 }
 
 extension UIButton{
-    
     func pulsate(){
         let pulse = CASpringAnimation(keyPath: "transform.scale")
         pulse.duration = 0.6
@@ -136,8 +149,6 @@ extension UIButton{
         pulse.repeatCount = 2
         pulse.initialVelocity = 0.5
         pulse.damping = 1.0
-        
         layer.add(pulse, forKey: nil)
     }
-    
 }

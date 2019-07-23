@@ -31,7 +31,7 @@ final class TVShowTableViewCell: UITableViewCell {
         let imageUrl = item.imageUrl
         if imageUrl.isEmpty { thumbnail.image = nil}
         else{
-        let url = URL(string: "https://api.infinum.academy" + imageUrl)
+            let url = URL(string: "https://api.infinum.academy" + imageUrl)
             thumbnail.kf.setImage(with: url)
         }
     }
