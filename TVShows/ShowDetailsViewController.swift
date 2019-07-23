@@ -31,35 +31,51 @@ struct EpisodeDetails: Codable {
 
 class ShowDetailsViewController: UIViewController {
 
+    // MARK: Outlets
+    
+    @IBOutlet private weak var showNumberOfEpisodes: UILabel!
+    @IBOutlet private weak var showEpisodeNumber: UILabel!
+    @IBOutlet private weak var seasonEpisodeNumber: UILabel!
+    @IBOutlet private weak var addNewEpisodeButton: UIButton!
     @IBOutlet private weak var episodeTableView: UITableView!
-    
-    @IBOutlet weak var showTitle: UILabel!
-    @IBOutlet weak var showDescription: UILabel!
-    @IBOutlet weak var backButton: UIButton!
-    
+    @IBOutlet private weak var showTitle: UILabel!
+    @IBOutlet private weak var showDescription: UILabel!
+    @IBOutlet private weak var backButton: UIButton!
     private var episodes = [EpisodeDetails]()
     var token: String!
     var id: String!
     var showTitleInput: String!
     var showDescriptionInput: String!
+
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showTitle.text = showTitleInput
         showDescription.text = showDescriptionInput
         showEpisodes()
-        //navigationItem.hidesBackButton = true
         self.navigationController?.setNavigationBarHidden( true, animated: true)
         setupTableView()
     }
     
-    @IBAction func goToPreviousViewController(_ sender: Any) {        
+    @IBAction private func goToPreviousViewController(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
+    }
+    
+    @IBAction private func addNewEpisode() {
+        let vc = makeAddEpisodeViewController()
+        vc.token = token
+        vc.showId = id
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    private func makeAddEpisodeViewController() -> addEpViewController {
+        let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! addEpViewController
     }
 }
 
 private extension ShowDetailsViewController {
-    
     func showEpisodes() {
         SVProgressHUD.show()
         let headers = ["Authorization": token!]
@@ -71,7 +87,6 @@ private extension ShowDetailsViewController {
                 headers: headers)
             .validate()
             .responseDecodableObject(keyPath: "data") { (response: DataResponse<[EpisodeDetails]>) in
-                
                 switch response.result {
                 case .success(let tvShowEpisodes):
                     print("Success: \(tvShowEpisodes)")
@@ -86,6 +101,7 @@ private extension ShowDetailsViewController {
 }
 
 // MARK: - UITableView
+
 extension ShowDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         episodeTableView.deselectRow(at: indexPath, animated: true)
@@ -95,15 +111,12 @@ extension ShowDetailsViewController: UITableViewDelegate {
 }
 
 extension ShowDetailsViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         print("CURRENT INDEX PATH BEING CONFIGURED: \(indexPath)")
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "EpisodeTableViewCell", for: indexPath) as! EpisodeTableViewCell
         cell.configure(with: episodes[indexPath.row])
         return cell
@@ -111,12 +124,19 @@ extension ShowDetailsViewController: UITableViewDataSource {
 }
 
 // MARK: - Private
+
 private extension ShowDetailsViewController {
     func setupTableView() {
-        //episodeTableView.estimatedRowHeight = 110
         episodeTableView.rowHeight = 50
         episodeTableView.tableFooterView = UIView()
         episodeTableView.delegate = self
         episodeTableView.dataSource = self
+    }
+}
+
+extension ShowDetailsViewController: addEpViewControllerDelegate {
+
+    func didAddNewEpisode() {
+        showEpisodes()
     }
 }

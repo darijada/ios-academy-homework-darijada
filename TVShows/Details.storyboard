@@ -36,6 +36,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-tB-5pB">
+                                <rect key="frame" x="40" y="262.5" width="334" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dPz-LI-Hpm">
                                 <rect key="frame" x="10" y="292" width="394" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -47,35 +53,63 @@
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-CU-BgU">
-                                                    <rect key="frame" x="30" y="0.0" width="334" height="43.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6o-Pl-Fg7">
+                                                    <rect key="frame" x="30" y="0.0" width="364" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9B-2J-1ch">
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="43.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="90" id="6fR-Ov-9aM"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" red="0.99866133930000001" green="0.45894449949999999" blue="0.54898977280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-CU-BgU">
+                                                            <rect key="frame" x="90" y="0.0" width="250" height="43.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-navigation-chevron-right-medium" translatesAutoresizingMaskIntoConstraints="NO" id="9qW-ad-CIE">
+                                                            <rect key="frame" x="340" y="0.0" width="24" height="43.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="zeS-Ik-BkB"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="9qW-ad-CIE" firstAttribute="leading" secondItem="Jws-CU-BgU" secondAttribute="trailing" id="0nD-e3-BY2"/>
+                                                        <constraint firstAttribute="bottom" secondItem="v9B-2J-1ch" secondAttribute="bottom" id="4zx-6m-e48"/>
+                                                        <constraint firstItem="v9B-2J-1ch" firstAttribute="leading" secondItem="s6o-Pl-Fg7" secondAttribute="leading" id="5gr-WW-bvC"/>
+                                                        <constraint firstItem="Jws-CU-BgU" firstAttribute="leading" secondItem="v9B-2J-1ch" secondAttribute="trailing" id="Ewk-Jo-rNB"/>
+                                                        <constraint firstItem="Jws-CU-BgU" firstAttribute="top" secondItem="s6o-Pl-Fg7" secondAttribute="top" id="G8d-Qm-wV4"/>
+                                                        <constraint firstItem="v9B-2J-1ch" firstAttribute="top" secondItem="s6o-Pl-Fg7" secondAttribute="top" id="dJ1-S4-dqe"/>
+                                                        <constraint firstItem="Jws-CU-BgU" firstAttribute="leading" secondItem="v9B-2J-1ch" secondAttribute="trailing" id="hpb-SJ-UvG"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Jws-CU-BgU" secondAttribute="bottom" id="nsy-X4-uM8"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Jws-CU-BgU" secondAttribute="bottom" id="7cy-w1-lKc"/>
-                                                <constraint firstItem="Jws-CU-BgU" firstAttribute="top" secondItem="7s6-xz-zJk" secondAttribute="top" id="WgR-0Q-6U5"/>
-                                                <constraint firstItem="Jws-CU-BgU" firstAttribute="leading" secondItem="7s6-xz-zJk" secondAttribute="leading" constant="30" id="bc4-CZ-WTk"/>
-                                                <constraint firstAttribute="trailing" secondItem="Jws-CU-BgU" secondAttribute="trailing" constant="30" id="yV0-uj-Pb6"/>
+                                                <constraint firstAttribute="trailing" secondItem="s6o-Pl-Fg7" secondAttribute="trailing" id="6SM-xT-HNp"/>
+                                                <constraint firstAttribute="bottom" secondItem="s6o-Pl-Fg7" secondAttribute="bottom" id="hg4-FJ-AFY"/>
+                                                <constraint firstItem="s6o-Pl-Fg7" firstAttribute="top" secondItem="7s6-xz-zJk" secondAttribute="top" id="mlj-XY-DG6"/>
+                                                <constraint firstItem="s6o-Pl-Fg7" firstAttribute="leading" secondItem="7s6-xz-zJk" secondAttribute="leading" constant="30" id="mlt-Wx-lhp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="episodeTitle" destination="Jws-CU-BgU" id="qJn-eV-NKg"/>
+                                            <outlet property="seasonNumber" destination="v9B-2J-1ch" id="S6M-gY-ISj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Episodes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-tB-5pB">
-                                <rect key="frame" x="40" y="262.5" width="334" height="19.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQt-Pc-oiK">
                                 <rect key="frame" x="292" y="780" width="122" height="74"/>
                                 <state key="normal" title="Button" image="ic-fab-button"/>
+                                <connections>
+                                    <action selector="addNewEpisode" destination="ZIG-Wb-S2g" eventType="touchUpInside" id="6xp-vs-fjr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg2-cg-S9f">
                                 <rect key="frame" x="40" y="50" width="86" height="64"/>
@@ -113,9 +147,11 @@
                         <viewLayoutGuide key="safeArea" id="kMV-tR-9n2"/>
                     </view>
                     <connections>
+                        <outlet property="addNewEpisodeButton" destination="jQt-Pc-oiK" id="LtT-MB-hUq"/>
                         <outlet property="backButton" destination="vg2-cg-S9f" id="gsj-pI-WK7"/>
                         <outlet property="episodeTableView" destination="dPz-LI-Hpm" id="cu6-qG-jsn"/>
                         <outlet property="showDescription" destination="pdn-dF-lRi" id="UHI-pu-pxa"/>
+                        <outlet property="showNumberOfEpisodes" destination="1NX-tB-5pB" id="c7a-JX-DVp"/>
                         <outlet property="showTitle" destination="7zF-cy-nIQ" id="7d5-Xk-Ln2"/>
                     </connections>
                 </viewController>
@@ -128,5 +164,6 @@
         <image name="TV" width="256" height="256"/>
         <image name="ic-fab-button" width="68" height="74"/>
         <image name="ic-navigate-back" width="32" height="32"/>
+        <image name="ic-navigation-chevron-right-medium" width="24" height="24"/>
     </resources>
 </document>

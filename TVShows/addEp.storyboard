@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pi5-dg-TQk">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add episode-->
+        <scene sceneID="IXq-cm-uZa">
+            <objects>
+                <viewController restorationIdentifier="addEpViewController" storyboardIdentifier="addEpViewController" id="buj-Ex-BSt" customClass="addEpViewController" customModule="TVShows" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o8V-be-tYk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgx-Bi-JoX">
+                                <rect key="frame" x="192" y="169" width="30" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="t3r-oZ-hJ1"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="ic-camera"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6E3-a9-PlS">
+                                <rect key="frame" x="163.5" y="201" width="87.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.9986613392829895" green="0.45894449949264526" blue="0.54898977279663086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="VKE-n8-s8h">
+                                <rect key="frame" x="40" y="328" width="334" height="160"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rYV-uB-RlO">
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="20"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L87-Ca-cm5">
+                                        <rect key="frame" x="0.0" y="27" width="334" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="5eC-ub-bbF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.79604560140000002" green="0.79610103369999996" blue="0.8116518855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="187-ck-b1b">
+                                        <rect key="frame" x="0.0" y="35" width="334" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="sez-YC-DL1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Season n." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dKQ-4x-kei">
+                                        <rect key="frame" x="0.0" y="44" width="334" height="20"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2w-wv-0qq">
+                                        <rect key="frame" x="0.0" y="71" width="334" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="W3L-GN-45x"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.79604560140000002" green="0.79610103369999996" blue="0.8116518855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hdz-RL-kL0">
+                                        <rect key="frame" x="0.0" y="79" width="334" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="g9x-cb-MJP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode n." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CI3-ur-WWA">
+                                        <rect key="frame" x="0.0" y="88" width="334" height="20"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdj-1c-cCy">
+                                        <rect key="frame" x="0.0" y="115" width="334" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="VVj-Do-IMc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.79604560140000002" green="0.79610103369999996" blue="0.8116518855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZY-GT-5Ry">
+                                        <rect key="frame" x="0.0" y="123" width="334" height="2"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="9nB-ag-hyd"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Episode description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qOk-3l-mZc">
+                                        <rect key="frame" x="0.0" y="132" width="334" height="20"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85v-Xu-zR7">
+                                        <rect key="frame" x="0.0" y="159" width="334" height="1"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Cdk-Se-33D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.79604560140000002" green="0.79610103369999996" blue="0.8116518855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vts-ST-oye">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="Add episode" id="upA-HE-wCm">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="em6-tR-Che">
+                                            <color key="tintColor" red="0.99866133930000001" green="0.45894449949999999" blue="0.54898977280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="buj-Ex-BSt" id="JFa-yZ-rDa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Add" id="S7H-AA-wfZ">
+                                            <color key="tintColor" red="0.99866133930000001" green="0.45894449949999999" blue="0.54898977280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vts-ST-oye" firstAttribute="trailing" secondItem="5Fl-H2-ahG" secondAttribute="trailing" id="1fZ-s9-iMN"/>
+                            <constraint firstItem="VKE-n8-s8h" firstAttribute="top" secondItem="6E3-a9-PlS" secondAttribute="bottom" constant="110" id="BWN-qp-uXc"/>
+                            <constraint firstItem="vts-ST-oye" firstAttribute="leading" secondItem="5Fl-H2-ahG" secondAttribute="leading" id="E5S-7R-gYe"/>
+                            <constraint firstItem="6E3-a9-PlS" firstAttribute="centerX" secondItem="o8V-be-tYk" secondAttribute="centerX" id="Kjo-ia-m5G"/>
+                            <constraint firstItem="vts-ST-oye" firstAttribute="top" secondItem="5Fl-H2-ahG" secondAttribute="top" id="Mcc-Sw-j9N"/>
+                            <constraint firstItem="VKE-n8-s8h" firstAttribute="centerX" secondItem="o8V-be-tYk" secondAttribute="centerX" id="RgK-Gl-28g"/>
+                            <constraint firstItem="5Fl-H2-ahG" firstAttribute="trailing" secondItem="VKE-n8-s8h" secondAttribute="trailing" constant="40" id="Szn-vX-Gq2"/>
+                            <constraint firstItem="6E3-a9-PlS" firstAttribute="top" secondItem="Xgx-Bi-JoX" secondAttribute="bottom" constant="8" id="ToH-xf-ydU"/>
+                            <constraint firstItem="Xgx-Bi-JoX" firstAttribute="centerX" secondItem="o8V-be-tYk" secondAttribute="centerX" id="Y2f-LB-FHg"/>
+                            <constraint firstItem="Xgx-Bi-JoX" firstAttribute="top" secondItem="5Fl-H2-ahG" secondAttribute="top" constant="125" id="rGJ-yO-KBg"/>
+                            <constraint firstItem="VKE-n8-s8h" firstAttribute="leading" secondItem="5Fl-H2-ahG" secondAttribute="leading" constant="40" id="y1Q-3N-M30"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5Fl-H2-ahG"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Add episode" id="KIJ-Wq-ApO">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7Xr-0D-j0R">
+                            <color key="tintColor" red="0.99866133930000001" green="0.45894449949999999" blue="0.54898977280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="fR7-yQ-MjQ">
+                            <color key="tintColor" red="0.99866133930000001" green="0.45894449949999999" blue="0.54898977280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addButton" destination="S7H-AA-wfZ" id="y4O-uB-ALF"/>
+                        <outlet property="cancelButton" destination="em6-tR-Che" id="boO-Gf-4zg"/>
+                        <outlet property="epTitle" destination="rYV-uB-RlO" id="UrG-7o-ABd"/>
+                        <outlet property="episodeDescription" destination="qOk-3l-mZc" id="AOK-gj-dN8"/>
+                        <outlet property="episodeNumber" destination="CI3-ur-WWA" id="LOf-gM-WaA"/>
+                        <outlet property="seasonNumber" destination="CI3-ur-WWA" id="RTd-Y6-vP0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rVs-Ug-7sx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3730.434782608696" y="158.70535714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Nrb-xi-g83">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pi5-dg-TQk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Al5-u7-mbw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YkI-k7-DU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2820.289855072464" y="158.70535714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic-camera" width="24" height="24"/>
+    </resources>
+</document>

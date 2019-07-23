@@ -40,6 +40,7 @@ final class LoginViewController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
+  
     
     // MARK: - Actions
     
@@ -81,6 +82,7 @@ private extension LoginViewController {
                    SVProgressHUD.showSuccess(withStatus: "User registered!")
                 case .failure(let error):
                     print("API failure: \(error)")
+                    SVProgressHUD.dismiss()
                     SVProgressHUD.showError(withStatus: "Email or Password field is required!")
                 }
         }
@@ -114,9 +116,28 @@ private extension LoginViewController {
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
                     print("API failure: \(error)")
-                    SVProgressHUD.dismiss()
-                    self?.loginFailureAlert()
+                    self?.logInButton.pulsate()
+                    //self?.loginFailureAlert()
                 }
+                SVProgressHUD.dismiss()
+
             })
     }
+}
+
+extension UIButton{
+    
+    func pulsate(){
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 0.6
+        pulse.fromValue = 0.95
+        pulse.toValue = 1.0
+        pulse.autoreverses = true
+        pulse.repeatCount = 2
+        pulse.initialVelocity = 0.5
+        pulse.damping = 1.0
+        
+        layer.add(pulse, forKey: nil)
+    }
+    
 }

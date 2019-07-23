@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import Kingfisher
 
 struct TVShowItem: Codable {
     let id: String
@@ -28,7 +29,6 @@ struct ShowDetails: Codable {
     let description: String
     let id: String
     let likesCount: Int
-    //let imageUrl: String
     
     enum CodingKeys: String, CodingKey {
         case type
@@ -36,19 +36,22 @@ struct ShowDetails: Codable {
         case description
         case id = "_id"
         case likesCount
-        //case imageUrl
     }
 }
 
 final class HomeViewController: UIViewController {
     
-    @IBOutlet private weak var showTableView: UITableView!
+    // MARK: - Outlets
     
+    @IBOutlet private weak var showTableView: UITableView!
     private var items = [TVShowItem]()
     var token: String!
 
+    // MARK: - Lifecycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // REMOVE back button?
         navigationItem.hidesBackButton = true
         setupTableView()
         apiCallShows()
@@ -68,7 +71,6 @@ private extension HomeViewController {
                 headers: headers)
             .validate()
             .responseDecodableObject(keyPath: "data") { (response: DataResponse<[TVShowItem]>) in
-
                 switch response.result {
                 case .success(let tvShows):
                     print("Success: \(tvShows)")
@@ -132,26 +134,24 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 extension HomeViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         print("CURRENT INDEX PATH BEING CONFIGURED: \(indexPath)")
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TVShowTableViewCell", for: indexPath) as! TVShowTableViewCell
         cell.configure(with: items[indexPath.row])
-        
         return cell
     }
 }
 
 //MARK: - Private
+
 private extension HomeViewController {
     func setupTableView() {
-        showTableView.estimatedRowHeight = 60
+        showTableView.estimatedRowHeight = 110
+        showTableView.rowHeight = UITableView.automaticDimension
         showTableView.tableFooterView = UIView()
         showTableView.delegate = self
         showTableView.dataSource = self
