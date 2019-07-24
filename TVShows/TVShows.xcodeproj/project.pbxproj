@@ -3,27 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06DDD19DD0F15F786D9A98AC /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D23BE3353466E39C513EBBA8 /* Pods_TVShows.framework */; };
+		420DBE4422DBE6510005F14C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420DBE4322DBE6510005F14C /* HomeViewController.swift */; };
+		420DBE4622DBE6B70005F14C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 420DBE4522DBE6B70005F14C /* Home.storyboard */; };
 		425A787222CE53EB0083E67E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A787122CE53EB0083E67E /* AppDelegate.swift */; };
-		425A788B22CF72BC0083E67E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425A788A22CF72BC0083E67E /* Login.storyboard */; };
-		425A788F22CF73330083E67E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A788E22CF73330083E67E /* LoginViewController.swift */; };
-		42E1E58C22CFC30E00BDBED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42E1E58B22CFC30E00BDBED4 /* Assets.xcassets */; };
+		425A787422CE53EB0083E67E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425A787322CE53EB0083E67E /* LoginViewController.swift */; };
+		425A787722CE53EB0083E67E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425A787522CE53EB0083E67E /* Login.storyboard */; };
+		425A787922CE53EC0083E67E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425A787822CE53EC0083E67E /* Assets.xcassets */; };
+		425A787C22CE53EC0083E67E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425A787A22CE53EC0083E67E /* LaunchScreen.storyboard */; };
+		428D8D3822DD00A900887535 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D8D3722DD00A900887535 /* User.swift */; };
+		444BAEE4F9FCA29FBD704758 /* Pods_TVShows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F77EC1A913732FF33520B2 /* Pods_TVShows.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3570221DA0D771745411E0C3 /* Pods-TVShows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.release.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.release.xcconfig"; sourceTree = "<group>"; };
+		04F77EC1A913732FF33520B2 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0776866AA0E7B514899106A5 /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
+		420DBE4322DBE6510005F14C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		420DBE4522DBE6B70005F14C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		425A786E22CE53EB0083E67E /* TVShows.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVShows.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425A787122CE53EB0083E67E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		425A787322CE53EB0083E67E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		425A787622CE53EB0083E67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		425A787822CE53EC0083E67E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		425A787B22CE53EC0083E67E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425A787D22CE53EC0083E67E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		425A788A22CF72BC0083E67E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		425A788E22CF73330083E67E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		42E1E58B22CFC30E00BDBED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7433922E600056A13CE632FA /* Pods-TVShows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.debug.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.debug.xcconfig"; sourceTree = "<group>"; };
-		D23BE3353466E39C513EBBA8 /* Pods_TVShows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVShows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		428D8D3722DD00A900887535 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D9F00578A2A923A6F340D104 /* Pods-TVShows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVShows.release.xcconfig"; path = "Target Support Files/Pods-TVShows/Pods-TVShows.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,38 +39,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06DDD19DD0F15F786D9A98AC /* Pods_TVShows.framework in Frameworks */,
+				444BAEE4F9FCA29FBD704758 /* Pods_TVShows.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		32E6B5F0C9A2F36FDD3DBAFB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D23BE3353466E39C513EBBA8 /* Pods_TVShows.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3D19038FA84798EA5D26BB16 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				7433922E600056A13CE632FA /* Pods-TVShows.debug.xcconfig */,
-				3570221DA0D771745411E0C3 /* Pods-TVShows.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		425A786522CE53EB0083E67E = {
 			isa = PBXGroup;
 			children = (
 				425A787022CE53EB0083E67E /* TVShows */,
 				425A786F22CE53EB0083E67E /* Products */,
-				3D19038FA84798EA5D26BB16 /* Pods */,
-				32E6B5F0C9A2F36FDD3DBAFB /* Frameworks */,
+				F79FC47DCE86D6320A4EE282 /* Pods */,
+				B83F38D39AB8615B0F4BAFDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,21 +67,42 @@
 		425A787022CE53EB0083E67E /* TVShows */ = {
 			isa = PBXGroup;
 			children = (
-				425A788922CF72860083E67E /* Login */,
+				428D8D3622DCBD3200887535 /* Login */,
 				425A787122CE53EB0083E67E /* AppDelegate.swift */,
+				420DBE4322DBE6510005F14C /* HomeViewController.swift */,
+				420DBE4522DBE6B70005F14C /* Home.storyboard */,
+				425A787822CE53EC0083E67E /* Assets.xcassets */,
+				425A787A22CE53EC0083E67E /* LaunchScreen.storyboard */,
 				425A787D22CE53EC0083E67E /* Info.plist */,
-				42E1E58B22CFC30E00BDBED4 /* Assets.xcassets */,
 			);
 			path = TVShows;
 			sourceTree = "<group>";
 		};
-		425A788922CF72860083E67E /* Login */ = {
+		428D8D3622DCBD3200887535 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				425A788A22CF72BC0083E67E /* Login.storyboard */,
-				425A788E22CF73330083E67E /* LoginViewController.swift */,
+				425A787522CE53EB0083E67E /* Login.storyboard */,
+				425A787322CE53EB0083E67E /* LoginViewController.swift */,
+				428D8D3722DD00A900887535 /* User.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		B83F38D39AB8615B0F4BAFDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04F77EC1A913732FF33520B2 /* Pods_TVShows.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F79FC47DCE86D6320A4EE282 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0776866AA0E7B514899106A5 /* Pods-TVShows.debug.xcconfig */,
+				D9F00578A2A923A6F340D104 /* Pods-TVShows.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,11 +112,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 425A788022CE53EC0083E67E /* Build configuration list for PBXNativeTarget "TVShows" */;
 			buildPhases = (
-				E4829C71FA2BAE620FD40A4C /* [CP] Check Pods Manifest.lock */,
+				D6826BE7E29D5368C303E7FD /* [CP] Check Pods Manifest.lock */,
 				425A786A22CE53EB0083E67E /* Sources */,
 				425A786B22CE53EB0083E67E /* Frameworks */,
 				425A786C22CE53EB0083E67E /* Resources */,
-				8B6529B7AD0B88B9D3A4692A /* [CP] Embed Pods Frameworks */,
+				8A3E4FE6584A7923E2F9000F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,15 +165,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E1E58C22CFC30E00BDBED4 /* Assets.xcassets in Resources */,
-				425A788B22CF72BC0083E67E /* Login.storyboard in Resources */,
+				425A787C22CE53EC0083E67E /* LaunchScreen.storyboard in Resources */,
+				425A787922CE53EC0083E67E /* Assets.xcassets in Resources */,
+				425A787722CE53EB0083E67E /* Login.storyboard in Resources */,
+				420DBE4622DBE6B70005F14C /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8B6529B7AD0B88B9D3A4692A /* [CP] Embed Pods Frameworks */ = {
+		8A3E4FE6584A7923E2F9000F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -179,7 +192,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TVShows/Pods-TVShows-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E4829C71FA2BAE620FD40A4C /* [CP] Check Pods Manifest.lock */ = {
+		D6826BE7E29D5368C303E7FD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -208,12 +221,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				425A788F22CF73330083E67E /* LoginViewController.swift in Sources */,
+				428D8D3822DD00A900887535 /* User.swift in Sources */,
+				425A787422CE53EB0083E67E /* LoginViewController.swift in Sources */,
 				425A787222CE53EB0083E67E /* AppDelegate.swift in Sources */,
+				420DBE4422DBE6510005F14C /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		425A787522CE53EB0083E67E /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				425A787622CE53EB0083E67E /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		425A787A22CE53EC0083E67E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				425A787B22CE53EC0083E67E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		425A787E22CE53EC0083E67E /* Debug */ = {
@@ -334,7 +368,7 @@
 		};
 		425A788122CE53EC0083E67E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7433922E600056A13CE632FA /* Pods-TVShows.debug.xcconfig */;
+			baseConfigurationReference = 0776866AA0E7B514899106A5 /* Pods-TVShows.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -352,7 +386,7 @@
 		};
 		425A788222CE53EC0083E67E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3570221DA0D771745411E0C3 /* Pods-TVShows.release.xcconfig */;
+			baseConfigurationReference = D9F00578A2A923A6F340D104 /* Pods-TVShows.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
