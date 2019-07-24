@@ -21,7 +21,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     private var tapped = false
-    //private var _infoLabel: String = "Unknown"
+    private var numberOfClicksOnCheckMark = 0
     
     // MARK: - Lifecycle methods
     
@@ -30,8 +30,18 @@ final class LoginViewController: UIViewController {
         logInButton.layer.cornerRadius = 6
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard
+            let email = UserDefaults.standard.value(forKey: "email") as? String,
+            let password = UserDefaults.standard.value(forKey: "password") as? String
+        else { return }
+        
+        emailTextField.text = email
+        passwordTextField.text = password
+        logInButtonActionHandler()
+        
     }
     
     private func loginFailureAlert(){
@@ -43,8 +53,18 @@ final class LoginViewController: UIViewController {
     }
   
     @IBAction func rememberMeTapped(_ sender: Any) {
-        self.tapped = true
-        print("Remember me!")
+        self.numberOfClicksOnCheckMark += 1
+        
+        if (numberOfClicksOnCheckMark % 2 != 0){
+            self.tapped = true
+            checkmarkButton.setImage(UIImage(named: "ic-checkbox-filled.png"), for: .normal)
+            print("Remember me!")
+        }
+        else{
+            self.tapped = false
+            checkmarkButton.setImage(UIImage(named: "ic-checkbox-empty.png"), for: .normal)
+            print("Don't remember me!")
+        }
     }
     
     // MARK: - Actions
@@ -127,7 +147,7 @@ private extension LoginViewController {
                         UserDefaults.standard.set(userEmail, forKey: "email")
                         UserDefaults.standard.set(userPassword, forKey: "password")
                     }
-                    self?.navigationController?.pushViewController(viewController, animated: true)
+                    self?.navigationController?.setViewControllers([viewController], animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
                     print("API failure: \(error)")

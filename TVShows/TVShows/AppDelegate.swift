@@ -13,21 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        check()
         return true
-    }
-    
-    func check(){
-        if (UserDefaults.standard.value(forKey: "email") != nil && UserDefaults.standard.value(forKey: "password") != nil) {
-            let viewController = UIStoryboard(name: "Home", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController")
-            let navigationController = UINavigationController(rootViewController: viewController)
-            let share = UIApplication.shared.delegate as? AppDelegate
-            share?.window?.rootViewController = navigationController
-            share?.window?.makeKeyAndVisible()
-        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

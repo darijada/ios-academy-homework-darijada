@@ -47,6 +47,7 @@ class ShowDetailsViewController: UIViewController {
     var id: String!
     var showTitleInput: String!
     var showDescriptionInput: String!
+    var imageURL: String?
 
     // MARK: - Lifecycle methods
     
@@ -57,6 +58,13 @@ class ShowDetailsViewController: UIViewController {
         showEpisodes()
         self.navigationController?.setNavigationBarHidden( true, animated: true)
         setupTableView()
+        setImage()
+    }
+    
+    func setImage() {
+        guard let imageUrl = imageURL else { return }
+        let url = URL(string: "https://api.infinum.academy" + imageUrl)
+        thumbnail.kf.setImage(with: url)
     }
     
     @IBAction private func goToPreviousViewController(_ sender: Any) {
@@ -94,8 +102,6 @@ private extension ShowDetailsViewController {
                     self.episodes = tvShowEpisodes
                     print(tvShowEpisodes.count)
                     self.showNumberOfEpisodes.text = "Episodes " + " \(tvShowEpisodes.count)"
-                   
-                   
                     self.episodeTableView.reloadData()
                 case .failure(let error):
                     print("API failure: \(error)")
@@ -142,5 +148,6 @@ private extension ShowDetailsViewController {
 extension ShowDetailsViewController: addEpViewControllerDelegate {
     func didAddNewEpisode() {
         showEpisodes()
+       
     }
 }

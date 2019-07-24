@@ -46,20 +46,24 @@ final class HomeViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet private weak var showTableView: UITableView!
-    @IBOutlet weak var logoutButton: UIBarButtonItem!
+//    @IBOutlet weak var logoutButton: UIBarButtonItem!
     private var items = [TVShowItem]()
-    var token: String!
+    var token: String?
 
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // REMOVE back button?
-        navigationItem.hidesBackButton = true
-    
+        let logout = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutActionHandler))
+        logout.tintColor = .red
+        navigationItem.leftBarButtonItem = logout
         setupTableView()
         apiCallShows()
-        logoutButton.action = #selector(logoutActionHandler)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     @objc private func logoutActionHandler() {
@@ -75,10 +79,10 @@ final class HomeViewController: UIViewController {
 }
 
 private extension HomeViewController {
-    
     func apiCallShows() {
         SVProgressHUD.show()
-        let headers = ["Authorization": "token \(String(describing: self.token))"]
+        guard let token = self.token else { return }
+        let headers = ["Authorization": "token \(token)"]
         Alamofire
             .request(
                 "https://api.infinum.academy/api/shows",
@@ -99,7 +103,8 @@ private extension HomeViewController {
         }
     }
     
-    func showEpisodes(id: String) {
+    func showEpisodes(item: TVShowItem) {
+        let id = item.id
         SVProgressHUD.show()
         let parameters: [String: String] = [
             "id": id
@@ -118,7 +123,8 @@ private extension HomeViewController {
                     let viewController = storyboard.instantiateViewController( withIdentifier: "ShowDetailsViewController") as! ShowDetailsViewController
                     viewController.token = self.token
                     viewController.id = tvShowDetails.id
-                   viewController.showTitleInput = tvShowDetails.title
+                    viewController.imageURL = item.imageUrl
+                    viewController.showTitleInput = tvShowDetails.title
                     viewController.showDescriptionInput = tvShowDetails.description
                     self.navigationController?.pushViewController(viewController, animated: true)
                 case .failure(let error):
@@ -134,9 +140,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showTableView.deselectRow(at: indexPath, animated: true)
         let item = items[indexPath.row]
-        let itemId = item.id
-        print("Selected Item: \(item)")
-        showEpisodes(id: itemId)
+        showEpisodes(item: item)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
