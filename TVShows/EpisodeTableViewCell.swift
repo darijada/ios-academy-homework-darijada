@@ -25,6 +25,6 @@ class EpisodeTableViewCell: UITableViewCell {
     
     func configure(with episode: EpisodeDetails) {
         episodeTitle.text = episode.title
-        seasonNumber.text = "S" + episode.season + " " + "Ep" + episode.episodeNumber
+        seasonNumber.text = "S\(episode.season) Ep\(episode.episodeNumber)"
     }
 }

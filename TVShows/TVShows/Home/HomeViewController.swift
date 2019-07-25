@@ -54,8 +54,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logout = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(logoutActionHandler))
-        logout.tintColor = .red
+        let logout = UIBarButtonItem(image: UIImage(named: "ic-logout.png"), style: .done, target: self, action: #selector(logoutActionHandler))
         navigationItem.leftBarButtonItem = logout
         setupTableView()
         apiCallShows()

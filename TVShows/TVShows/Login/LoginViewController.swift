@@ -21,7 +21,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     private var tapped = false
-    private var numberOfClicksOnCheckMark = 0
     
     // MARK: - Lifecycle methods
     
@@ -41,7 +40,6 @@ final class LoginViewController: UIViewController {
         emailTextField.text = email
         passwordTextField.text = password
         logInButtonActionHandler()
-        
     }
     
     private func loginFailureAlert(){
@@ -53,15 +51,13 @@ final class LoginViewController: UIViewController {
     }
   
     @IBAction func rememberMeTapped(_ sender: Any) {
-        self.numberOfClicksOnCheckMark += 1
-        
-        if (numberOfClicksOnCheckMark % 2 != 0){
-            self.tapped = true
+        self.tapped = !self.tapped
+                
+        if (self.tapped == true){
             checkmarkButton.setImage(UIImage(named: "ic-checkbox-filled.png"), for: .normal)
             print("Remember me!")
         }
         else{
-            self.tapped = false
             checkmarkButton.setImage(UIImage(named: "ic-checkbox-empty.png"), for: .normal)
             print("Don't remember me!")
         }

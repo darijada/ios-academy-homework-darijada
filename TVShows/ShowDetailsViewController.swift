@@ -62,9 +62,12 @@ class ShowDetailsViewController: UIViewController {
     }
     
     func setImage() {
-        guard let imageUrl = imageURL else { return }
+        guard
+            let imageUrl = imageURL,
+            !imageUrl.isEmpty
+        else { return }
         let url = URL(string: "https://api.infinum.academy" + imageUrl)
-        thumbnail.kf.setImage(with: url)
+        thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "TV"))
     }
     
     @IBAction private func goToPreviousViewController(_ sender: Any) {
@@ -72,10 +75,11 @@ class ShowDetailsViewController: UIViewController {
     }
     
     @IBAction private func addNewEpisode() {
-        let vc = makeAddEpisodeViewController()
-        vc.token = token
-        vc.showId = id
-        self.present(vc, animated: true, completion: nil)
+        let addViewController = makeAddEpisodeViewController()
+        addViewController.token = token
+        addViewController.showId = id
+        addViewController.delegate = self
+        self.present(addViewController, animated: true, completion: nil)
     }
     
     private func makeAddEpisodeViewController() -> addEpViewController {
@@ -148,6 +152,5 @@ private extension ShowDetailsViewController {
 extension ShowDetailsViewController: addEpViewControllerDelegate {
     func didAddNewEpisode() {
         showEpisodes()
-       
     }
 }
