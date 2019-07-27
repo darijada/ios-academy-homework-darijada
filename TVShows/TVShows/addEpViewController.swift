@@ -19,12 +19,14 @@ class addEpViewController: UIViewController {
 
     // MARK: Outlets
     
+    @IBOutlet weak var uploadPhotoButton: UIButton!
     @IBOutlet weak var epTitle: UITextField!
     @IBOutlet weak var seasonNumber: UITextField!
     @IBOutlet weak var episodeNumber: UITextField!
     @IBOutlet weak var episodeDescription: UITextField!
     var token: String?
     var showId: String?
+    var mediaID: String?
     weak var delegate: addEpViewControllerDelegate?
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -34,6 +36,10 @@ class addEpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton.action = #selector(addEpisodeButton)
+    }
+    
+    
+    @IBAction func uploadPhotoButtonHandler(_ sender: Any) {
     }
     
     @objc func addEpisodeButton() {
@@ -47,6 +53,8 @@ class addEpViewController: UIViewController {
     @objc func cancelButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     private func createEpisodeFailureAlert(){
         let alert = UIAlertController(title: "Adding episode failure alert", message: "All fields are required!", preferredStyle: .alert)

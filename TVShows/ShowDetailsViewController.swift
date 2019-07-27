@@ -48,6 +48,7 @@ class ShowDetailsViewController: UIViewController {
     var showTitleInput: String!
     var showDescriptionInput: String!
     var imageURL: String?
+    var refreshControl: UIRefreshControl?
 
     // MARK: - Lifecycle methods
     
@@ -59,6 +60,7 @@ class ShowDetailsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden( true, animated: true)
         setupTableView()
         setImage()
+        addRefreshControl()
     }
     
     func setImage() {
@@ -85,6 +87,18 @@ class ShowDetailsViewController: UIViewController {
     private func makeAddEpisodeViewController() -> addEpViewController {
         let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
         return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! addEpViewController
+    }
+    
+    func addRefreshControl(){
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        episodeTableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshList(){
+        refreshControl?.endRefreshing()
+        showEpisodes()
+        episodeTableView.reloadData()
     }
 }
 
