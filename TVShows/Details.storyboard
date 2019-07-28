@@ -118,7 +118,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vg2-cg-S9f">
-                                <rect key="frame" x="40" y="50" width="32" height="264"/>
+                                <rect key="frame" x="20" y="68" width="32" height="246"/>
                                 <state key="normal" image="ic-navigate-back"/>
                                 <connections>
                                     <action selector="goToPreviousViewController:" destination="ZIG-Wb-S2g" eventType="touchUpInside" id="ZsE-BZ-mJJ"/>
@@ -132,14 +132,14 @@
                             <constraint firstItem="dPz-LI-Hpm" firstAttribute="leading" secondItem="EuQ-e0-akJ" secondAttribute="leading" constant="10" id="3P7-AH-ehd"/>
                             <constraint firstItem="kMV-tR-9n2" firstAttribute="trailing" secondItem="pdn-dF-lRi" secondAttribute="trailing" constant="40" id="4Vf-5a-KmE"/>
                             <constraint firstItem="kMV-tR-9n2" firstAttribute="bottom" secondItem="dPz-LI-Hpm" secondAttribute="bottom" constant="60" id="5b5-Gv-hMp"/>
-                            <constraint firstItem="vg2-cg-S9f" firstAttribute="leading" secondItem="kMV-tR-9n2" secondAttribute="leading" constant="40" id="60a-cA-CnS"/>
+                            <constraint firstItem="vg2-cg-S9f" firstAttribute="leading" secondItem="kMV-tR-9n2" secondAttribute="leading" constant="20" id="60a-cA-CnS"/>
                             <constraint firstItem="kMV-tR-9n2" firstAttribute="trailing" secondItem="7zF-cy-nIQ" secondAttribute="trailing" constant="40" id="93O-ik-swM"/>
                             <constraint firstItem="7zF-cy-nIQ" firstAttribute="top" secondItem="vg2-cg-S9f" secondAttribute="bottom" constant="40" id="9fq-yr-aCS"/>
                             <constraint firstItem="kMV-tR-9n2" firstAttribute="trailing" secondItem="B6x-Af-xur" secondAttribute="trailing" id="BeP-5L-iTt"/>
                             <constraint firstItem="dPz-LI-Hpm" firstAttribute="centerX" secondItem="EuQ-e0-akJ" secondAttribute="centerX" id="EYr-8b-Vb1"/>
                             <constraint firstItem="B6x-Af-xur" firstAttribute="leading" secondItem="kMV-tR-9n2" secondAttribute="leading" id="FLM-Qi-ag7"/>
                             <constraint firstItem="kMV-tR-9n2" firstAttribute="bottom" secondItem="jQt-Pc-oiK" secondAttribute="bottom" constant="8" id="FSu-gG-ugi"/>
-                            <constraint firstItem="vg2-cg-S9f" firstAttribute="top" secondItem="kMV-tR-9n2" secondAttribute="top" constant="6" id="JYo-Ky-Owd"/>
+                            <constraint firstItem="vg2-cg-S9f" firstAttribute="top" secondItem="kMV-tR-9n2" secondAttribute="top" constant="24" id="JYo-Ky-Owd"/>
                             <constraint firstItem="kMV-tR-9n2" firstAttribute="bottom" secondItem="jQt-Pc-oiK" secondAttribute="bottom" constant="8" id="LAj-xa-AjN"/>
                             <constraint firstItem="jQt-Pc-oiK" firstAttribute="trailing" secondItem="kMV-tR-9n2" secondAttribute="trailing" id="MMn-rD-qjG"/>
                             <constraint firstItem="7zF-cy-nIQ" firstAttribute="leading" secondItem="kMV-tR-9n2" secondAttribute="leading" constant="40" id="Nou-4b-qLz"/>

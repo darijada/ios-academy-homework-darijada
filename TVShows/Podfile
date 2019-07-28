@@ -7,5 +7,6 @@ target 'TVShows' do
   pod 'SVProgressHUD'
   pod 'CodableAlamofire'
   pod 'Kingfisher', '~> 5.0'
+  pod 'TBEmptyDataSet', '~> 3.0'
 
 end
