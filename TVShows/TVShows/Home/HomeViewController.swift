@@ -11,42 +11,11 @@ import Alamofire
 import SVProgressHUD
 import Kingfisher
 
-struct TVShowItem: Codable {
-    let id: String
-    let title: String
-    let imageUrl: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case imageUrl
-        case id = "_id"
-    }
-}
-
-struct ShowDetails: Codable {
-    let type: String
-    let title: String
-    let description: String
-    let id: String
-    let likesCount: Int
-    let imageUrl: String
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case title
-        case description
-        case id = "_id"
-        case likesCount
-        case imageUrl
-    }
-}
-
 final class HomeViewController: UIViewController {
     
     // MARK: - Outlets
     
     @IBOutlet private weak var showTableView: UITableView!
-//    @IBOutlet weak var logoutButton: UIBarButtonItem!
     private var items = [TVShowItem]()
     var token: String?
 
@@ -54,10 +23,14 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logout = UIBarButtonItem(image: UIImage(named: "ic-logout.png"), style: .done, target: self, action: #selector(logoutActionHandler))
-        navigationItem.leftBarButtonItem = logout
+        logoutButtonConfigure()
         setupTableView()
         apiCallShows()
+    }
+    
+    private func logoutButtonConfigure(){
+        let logout = UIBarButtonItem(image: UIImage(named: "ic-logout.png"), style: .done, target: self, action: #selector(logoutActionHandler))
+        navigationItem.leftBarButtonItem = logout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,16 +44,14 @@ final class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController( withIdentifier: "LoginViewController") as! LoginViewController
         let navigationController = UINavigationController(rootViewController: viewController)
-        let share = UIApplication.shared.delegate as? AppDelegate
-        share?.window?.rootViewController = navigationController
-        share?.window?.makeKeyAndVisible()
+        navigationController.setViewControllers([viewController], animated: true)
     }
 }
 
 private extension HomeViewController {
     func apiCallShows() {
         SVProgressHUD.show()
-        guard let token = self.token else { return }
+        guard let token = token else { return }
         let headers = ["Authorization": "token \(token)"]
         Alamofire
             .request(

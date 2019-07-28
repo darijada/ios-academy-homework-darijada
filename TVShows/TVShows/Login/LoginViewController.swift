@@ -20,7 +20,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var checkmarkButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    private var tapped = false
     
     // MARK: - Lifecycle methods
     
@@ -41,29 +40,12 @@ final class LoginViewController: UIViewController {
         passwordTextField.text = password
         logInButtonActionHandler()
     }
-    
-    private func loginFailureAlert(){
-        let alert = UIAlertController(title: "Login failure alert", message: "Incorrect Email or Password!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
   
-    @IBAction func rememberMeTapped(_ sender: Any) {
-        self.tapped = !self.tapped
-                
-        if (self.tapped == true){
-            checkmarkButton.setImage(UIImage(named: "ic-checkbox-filled.png"), for: .normal)
-            print("Remember me!")
-        }
-        else{
-            checkmarkButton.setImage(UIImage(named: "ic-checkbox-empty.png"), for: .normal)
-            print("Don't remember me!")
-        }
-    }
-    
     // MARK: - Actions
+    
+    @IBAction private func rememberMeTapped(_ sender: Any) {
+        checkmarkButton.isSelected.toggle()
+    }
     
     @IBAction private func logInButtonActionHandler() {
         guard let userEmail = emailTextField.text else { return }
@@ -116,6 +98,15 @@ private extension LoginViewController {
 
 private extension LoginViewController {
     
+    func rememberLoginData(){
+        if self.checkmarkButton.isSelected == true {
+            guard let userEmail = self.emailTextField.text else { return }
+            guard let userPassword = self.passwordTextField.text else { return }
+            UserDefaults.standard.set(userEmail, forKey: "email")
+            UserDefaults.standard.set(userPassword, forKey: "password")
+        }
+    }
+    
     func loginUser(email: String, password: String) {
         SVProgressHUD.show()
         let parameters: [String: String] = [
@@ -134,21 +125,14 @@ private extension LoginViewController {
                 case .success(let loginData):
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController") as! HomeViewController
-                    
                     viewController.token = loginData.token
-                    
-                    if self?.tapped == true {
-                        guard let userEmail = self?.emailTextField.text else { return }
-                        guard let userPassword = self?.passwordTextField.text else { return }
-                        UserDefaults.standard.set(userEmail, forKey: "email")
-                        UserDefaults.standard.set(userPassword, forKey: "password")
-                    }
+                    self?.rememberLoginData()
                     self?.navigationController?.setViewControllers([viewController], animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
                     print("API failure: \(error)")
-                    self?.logInButton.pulsate()
                     //self?.loginFailureAlert()
+                    self?.logInButton.pulsate()
                 }
                 SVProgressHUD.dismiss()
             })
@@ -167,4 +151,15 @@ extension UIButton{
         pulse.damping = 1.0
         layer.add(pulse, forKey: nil)
     }
+}
+
+extension LoginViewController {
+    private func loginFailureAlert(){
+        let alert = UIAlertController(title: "Login failure alert", message: "Incorrect Email or Password!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }

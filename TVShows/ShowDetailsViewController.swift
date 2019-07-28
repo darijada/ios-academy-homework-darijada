@@ -11,25 +11,7 @@ import SVProgressHUD
 import Alamofire
 import CodableAlamofire
 
-struct EpisodeDetails: Codable {
-    let id: String
-    let title: String
-    let description: String
-    let imageUrl: String
-    let episodeNumber: String
-    let season: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case imageUrl
-        case id = "_id"
-        case description
-        case episodeNumber
-        case season
-    }
-}
-
-class ShowDetailsViewController: UIViewController {
+final class ShowDetailsViewController: UIViewController {
 
     // MARK: Outlets
     
@@ -42,6 +24,7 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet private weak var showTitle: UILabel!
     @IBOutlet private weak var showDescription: UILabel!
     @IBOutlet private weak var backButton: UIButton!
+    
     private var episodes = [EpisodeDetails]()
     var token: String!
     var id: String!
@@ -61,7 +44,7 @@ class ShowDetailsViewController: UIViewController {
         setImage()
     }
     
-    func setImage() {
+    private func setImage() {
         guard
             let imageUrl = imageURL,
             !imageUrl.isEmpty
@@ -69,6 +52,13 @@ class ShowDetailsViewController: UIViewController {
         let url = URL(string: "https://api.infinum.academy" + imageUrl)
         thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "TV"))
     }
+    
+    private func makeAddEpisodeViewController() -> AddEpViewController {
+        let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! AddEpViewController
+    }
+    
+    // MARK: - Actions
     
     @IBAction private func goToPreviousViewController(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
@@ -80,11 +70,6 @@ class ShowDetailsViewController: UIViewController {
         addViewController.showId = id
         addViewController.delegate = self
         self.present(addViewController, animated: true, completion: nil)
-    }
-    
-    private func makeAddEpisodeViewController() -> addEpViewController {
-        let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! addEpViewController
     }
 }
 

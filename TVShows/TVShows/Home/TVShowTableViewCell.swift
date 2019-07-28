@@ -12,8 +12,8 @@ import Kingfisher
 final class TVShowTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     //var imageUrl: String?
     
     override func awakeFromNib() {
@@ -22,17 +22,17 @@ final class TVShowTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        title.text = nil
-        thumbnail.image = nil
+        titleLabel.text = nil
+        thumbnailImageView.image = nil
     }
     
     func configure(with item: TVShowItem) {
-        title.text = item.title
+        titleLabel.text = item.title
         let imageUrl = item.imageUrl
-        if imageUrl.isEmpty { thumbnail.image = nil}
+        if imageUrl.isEmpty { thumbnailImageView.image = nil}
         else{
             let url = URL(string: "https://api.infinum.academy" + imageUrl)
-            thumbnail.kf.setImage(with: url)
+            thumbnailImageView.kf.setImage(with: url)
         }
     }
 }
