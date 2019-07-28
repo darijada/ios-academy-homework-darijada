@@ -15,19 +15,20 @@ protocol addEpViewControllerDelegate: class {
     func didAddNewEpisode()
 }
 
-class addEpViewController: UIViewController {
+final class AddEpViewController: UIViewController {
 
     // MARK: Outlets
     
-    @IBOutlet weak var epTitle: UITextField!
+    @IBOutlet weak var episodeTitle: UITextField!
     @IBOutlet weak var seasonNumber: UITextField!
     @IBOutlet weak var episodeNumber: UITextField!
     @IBOutlet weak var episodeDescription: UITextField!
-    var token: String?
-    var showId: String?
-    weak var delegate: addEpViewControllerDelegate?
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var addButton: UIBarButtonItem!
+    
+    weak var delegate: addEpViewControllerDelegate?
+    var token: String?
+    var showId: String?
     
     // MARK: Methods
     
@@ -37,7 +38,7 @@ class addEpViewController: UIViewController {
     }
     
     @objc func addEpisodeButton() {
-        guard let showTitle = epTitle.text else { return }
+        guard let showTitle = episodeTitle.text else { return }
         guard let showSeasonNumber = seasonNumber.text else { return }
         guard let showEpisodeNumber = episodeNumber.text else { return }
         guard let showEpisodeDescription = episodeDescription.text else { return }
@@ -58,7 +59,7 @@ class addEpViewController: UIViewController {
     }
 }
 
-private extension addEpViewController{
+private extension AddEpViewController{
     
     func addEpisode(title: String, season: String, episodeNumber: String, description: String) {
         SVProgressHUD.show()
@@ -98,6 +99,6 @@ private extension addEpViewController{
                 SVProgressHUD.dismiss()
             }
         )
-        }}
+    }
+    }
 }
-
