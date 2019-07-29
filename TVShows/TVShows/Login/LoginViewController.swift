@@ -28,6 +28,11 @@ final class LoginViewController: UIViewController {
         logInButton.layer.cornerRadius = 6
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -56,13 +61,20 @@ final class LoginViewController: UIViewController {
     @IBAction private func createAccountButtonActionHandler() {
         guard let userEmail = emailTextField.text else { return }
         guard let userPassword = passwordTextField.text else { return }
-        createUserAccount(email: userEmail, password: userPassword)    }
+        createUserAccount(email: userEmail, password: userPassword)    
+    }
+    
+    private func goToHomeViewController(){
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController")
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
-    // MARK: - Register + automatic JSON parsing
+// MARK: - Register + automatic JSON parsing
 
 private extension LoginViewController {
-    
+
     func createUserAccount(email: String, password: String) {
         SVProgressHUD.show()
         
@@ -94,7 +106,7 @@ private extension LoginViewController {
     }
 }
 
-    // MARK: - Login + automatic JSON parsing
+// MARK: - Login + automatic JSON parsing
 
 private extension LoginViewController {
     
