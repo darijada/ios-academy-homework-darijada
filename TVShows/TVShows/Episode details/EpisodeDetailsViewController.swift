@@ -11,7 +11,7 @@ import Alamofire
 import SVProgressHUD
 import Kingfisher
 
-class EpisodeDetailsViewController: UIViewController {
+final class EpisodeDetailsViewController: UIViewController {
     
     // MARK: Outlets and variables
     
@@ -30,8 +30,8 @@ class EpisodeDetailsViewController: UIViewController {
     var epNumber : String!
     var epSeason: String!
     
-    // MARK: Methods
-    
+    // MARK: - Lifecycle methods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         episodeTitle.text = epTitle
@@ -40,7 +40,9 @@ class EpisodeDetailsViewController: UIViewController {
         let url = URL(string: "https://api.infinum.academy" + imageURL)
         thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "TV"))
     }
-    
+
+    // MARK: - Actions
+
     @IBAction func goToPreviousViewController(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
     }

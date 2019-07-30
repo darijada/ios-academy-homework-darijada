@@ -11,29 +11,11 @@ import SVProgressHUD
 import Alamofire
 import CodableAlamofire
 
-struct EpisodeDetails: Codable {
-    let id: String
-    let title: String
-    let description: String
-    let imageUrl: String
-    let episodeNumber: String
-    let season: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case imageUrl
-        case id = "_id"
-        case description
-        case episodeNumber
-        case season
-    }
-}
-
-class ShowDetailsViewController: UIViewController {
+final class ShowDetailsViewController: UIViewController {
 
     // MARK: Outlets
     
-    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet private weak var thumbnail: UIImageView!
     @IBOutlet private weak var showNumberOfEpisodes: UILabel!
     @IBOutlet private weak var showEpisodeNumber: UILabel!
     @IBOutlet private weak var seasonEpisodeNumber: UILabel!
@@ -42,13 +24,14 @@ class ShowDetailsViewController: UIViewController {
     @IBOutlet private weak var showTitle: UILabel!
     @IBOutlet private weak var showDescription: UILabel!
     @IBOutlet private weak var backButton: UIButton!
+    
     private var episodes = [EpisodeDetails]()
     var token: String!
     var id: String!
     var showTitleInput: String!
     var showDescriptionInput: String!
     var imageURL: String?
-    var refreshControl: UIRefreshControl?
+    private var refreshControl: UIRefreshControl?
 
     // MARK: - Lifecycle methods
     
@@ -72,6 +55,24 @@ class ShowDetailsViewController: UIViewController {
         thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "TV"))
     }
     
+    private func makeAddEpisodeViewController() -> AddEpisodeViewController {
+        let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! AddEpisodeViewController
+    }
+    
+    func addRefreshControl(){
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        episodeTableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshList(){
+        showEpisodes()
+        refreshControl?.endRefreshing()
+    }
+    
+    // MARK: - Actions
+    
     @IBAction private func goToPreviousViewController(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
     }
@@ -83,21 +84,6 @@ class ShowDetailsViewController: UIViewController {
         addViewController.delegate = self
         self.present(addViewController, animated: true, completion: nil)
     }
-    
-    private func makeAddEpisodeViewController() -> addEpViewController {
-        let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! addEpViewController
-    }
-    
-    func addRefreshControl(){
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
-        episodeTableView.addSubview(refreshControl!)
-    }
-    
-    @objc func refreshList(){
-        showEpisodes()
-        refreshControl?.endRefreshing()    }
 }
 
 private extension ShowDetailsViewController {
@@ -125,8 +111,6 @@ private extension ShowDetailsViewController {
                 SVProgressHUD.dismiss()
         }
     }
-    
-    /////////
     
     func showEpisodeDetails(episode: EpisodeDetails) {
         let id = episode.id
@@ -197,7 +181,7 @@ private extension ShowDetailsViewController {
     }
 }
 
-extension ShowDetailsViewController: addEpViewControllerDelegate {
+extension ShowDetailsViewController: AddEpisodeViewControllerDelegate {
     func didAddNewEpisode() {
         showEpisodes()
     }

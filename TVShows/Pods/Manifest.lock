@@ -8,7 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - CodableAlamofire
+  - CodableAlamofire (~> 1.1)
   - Kingfisher (~> 5.0)
   - SVProgressHUD
   - TBEmptyDataSet (~> 3.0)
@@ -28,6 +28,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TBEmptyDataSet: 349add79095bf66d0d11ef9464edd1a8cf5354b5
 
-PODFILE CHECKSUM: 8839c39b16c9a86c3f0c686b0969c7b315070f14
+PODFILE CHECKSUM: a5f2ad09f4ebfc64f52f4b981e7df4f15f20f2f0
 
 COCOAPODS: 1.7.3

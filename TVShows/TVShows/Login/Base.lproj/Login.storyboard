@@ -75,6 +75,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5N-IJ-vKY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="57" height="31"/>
                                                                 <state key="normal" title="Button" image="ic-checkbox-empty"/>
+                                                                <state key="selected" image="ic-checkbox-filled"/>
                                                                 <connections>
                                                                     <action selector="rememberMeTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jg7-HS-kc9"/>
                                                                 </connections>
@@ -194,6 +195,7 @@
     </scenes>
     <resources>
         <image name="ic-checkbox-empty" width="24" height="24"/>
+        <image name="ic-checkbox-filled" width="24" height="24"/>
         <image name="login-logo" width="75" height="80"/>
     </resources>
 </document>

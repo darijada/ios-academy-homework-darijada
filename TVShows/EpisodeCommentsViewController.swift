@@ -8,11 +8,12 @@
 
 import UIKit
 import Alamofire
+import CodableAlamofire
 import Kingfisher
 import SVProgressHUD
 import TBEmptyDataSet
 
-class EpisodeCommentsViewController: UIViewController {
+final class EpisodeCommentsViewController: UIViewController {
     
     // MARK: Outlets and variables
     
@@ -40,24 +41,13 @@ class EpisodeCommentsViewController: UIViewController {
         commentsTableView.emptyDataSetDelegate = self
     }
     
-    @IBAction func backButtonActionHandler(_ sender: Any) {
-        self.navigationController!.popViewController(animated: true)
-    }
-    
     private func configureTapGesture(){
         let tapGesture = UITapGestureRecognizer(target:self, action: #selector(EpisodeCommentsViewController.handleTap))
         view.addGestureRecognizer(tapGesture)
     }
-
+    
     @objc func handleTap(){
         view.endEditing(true)
-    }
-    
-    @IBAction func postButtonTapped(_ sender: Any) {
-        postComment()
-        view.endEditing(true)
-        commentTextField.text = nil
-        showComments()
     }
     
     @objc func keyboard(notification:Notification) {
@@ -66,13 +56,34 @@ class EpisodeCommentsViewController: UIViewController {
         }
         if notification.name == UIResponder.keyboardWillShowNotification ||  notification.name == UIResponder.keyboardWillChangeFrameNotification {
             self.view.frame.origin.y = -keyboardReact.height
-        }else{
+        } else {
             self.view.frame.origin.y = 0
         }
     }
+    
+    private func emptyCommentFailureAlert(){
+        let alert = UIAlertController(title: "Comment failure alert", message: "Comment field is required!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+     // MARK: Actions
+    
+    @IBAction func backButtonActionHandler(_ sender: Any) {
+        self.navigationController!.popViewController(animated: true)
+    }
+    
+    @IBAction func postButtonTapped(_ sender: Any) {
+        postComment()
+        view.endEditing(true)
+        commentTextField.text = nil
+        showComments()
+    }
 }
 
-// MARK: - UITableView
+    // MARK: - UITableView
 
 extension EpisodeCommentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -95,7 +106,7 @@ extension EpisodeCommentsViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - Private
+// MARK: - Private
 
 private extension EpisodeCommentsViewController {
     func setupTableView() {
@@ -108,6 +119,7 @@ private extension EpisodeCommentsViewController {
 }
 
 private extension EpisodeCommentsViewController {
+    
     func showComments() {
         SVProgressHUD.show()
         let headers = ["Authorization": "token \(String(describing: self.token))"]
@@ -136,8 +148,9 @@ private extension EpisodeCommentsViewController {
         SVProgressHUD.show()
         guard let userComment = commentTextField.text else { return }
         if userComment.isEmpty
-        { print("ALL FIELDS ARE REQUIRED")}
-        
+        {
+            emptyCommentFailureAlert()
+        }
         else {
             guard let token = self.token else { return }
             let headers = ["Authorization": token]
@@ -158,11 +171,9 @@ private extension EpisodeCommentsViewController {
                     case .success(let episodeComment):
                         SVProgressHUD.dismiss()
                         print("Success: \(episodeComment)")
-                        //self?.delegate?.didAddNewEpisode()
                         self?.dismiss(animated: true, completion: nil)
                     case .failure(let error):
                         print("API failure: \(error)")
-                        //self?.createEpisodeFailureAlert()
                     }
                     SVProgressHUD.dismiss()
                     }

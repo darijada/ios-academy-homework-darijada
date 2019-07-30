@@ -20,7 +20,6 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var checkmarkButton: UIButton!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    private var tapped = false
     
     // MARK: - Lifecycle methods
     
@@ -31,40 +30,21 @@ final class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         guard
             let email = UserDefaults.standard.value(forKey: "email") as? String,
             let password = UserDefaults.standard.value(forKey: "password") as? String
         else { return }
-        
         emailTextField.text = email
         passwordTextField.text = password
         logInButtonActionHandler()
     }
-    
-    private func loginFailureAlert(){
-        let alert = UIAlertController(title: "Login failure alert", message: "Incorrect Email or Password!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-            NSLog("The \"OK\" alert occured.")
-        }))
-        self.present(alert, animated: true, completion: nil)
-    }
   
-    @IBAction func rememberMeTapped(_ sender: Any) {
-        self.tapped = !self.tapped
-                
-        if (self.tapped == true){
-            checkmarkButton.setImage(UIImage(named: "ic-checkbox-filled.png"), for: .normal)
-            print("Remember me!")
-        }
-        else{
-            checkmarkButton.setImage(UIImage(named: "ic-checkbox-empty.png"), for: .normal)
-            print("Don't remember me!")
-        }
-    }
-    
     // MARK: - Actions
     
+    @IBAction func rememberMeTapped(_ sender: Any) {
+        checkmarkButton.isSelected.toggle()
+    }
+
     @IBAction private func logInButtonActionHandler() {
         guard let userEmail = emailTextField.text else { return }
         guard let userPassword = passwordTextField.text else { return }
@@ -116,6 +96,15 @@ private extension LoginViewController {
 
 private extension LoginViewController {
     
+    func rememberLoginData(){
+        if self.checkmarkButton.isSelected == true {
+            guard let userEmail = self.emailTextField.text else { return }
+            guard let userPassword = self.passwordTextField.text else { return }
+            UserDefaults.standard.set(userEmail, forKey: "email")
+            UserDefaults.standard.set(userPassword, forKey: "password")
+        }
+    }
+    
     func loginUser(email: String, password: String) {
         SVProgressHUD.show()
         let parameters: [String: String] = [
@@ -134,15 +123,8 @@ private extension LoginViewController {
                 case .success(let loginData):
                     let storyboard = UIStoryboard(name: "Home", bundle: nil)
                     let viewController = storyboard.instantiateViewController( withIdentifier: "HomeViewController") as! HomeViewController
-                    
                     viewController.token = loginData.token
-                    
-                    if self?.tapped == true {
-                        guard let userEmail = self?.emailTextField.text else { return }
-                        guard let userPassword = self?.passwordTextField.text else { return }
-                        UserDefaults.standard.set(userEmail, forKey: "email")
-                        UserDefaults.standard.set(userPassword, forKey: "password")
-                    }
+                    self?.rememberLoginData()
                     self?.navigationController?.setViewControllers([viewController], animated: true)
                     SVProgressHUD.showSuccess(withStatus: "Successful login!")
                 case .failure(let error):
@@ -155,7 +137,7 @@ private extension LoginViewController {
     }
 }
 
-extension UIButton{
+extension UIButton {
     func pulsate(){
         let pulse = CASpringAnimation(keyPath: "transform.scale")
         pulse.duration = 0.6
@@ -166,5 +148,15 @@ extension UIButton{
         pulse.initialVelocity = 0.5
         pulse.damping = 1.0
         layer.add(pulse, forKey: nil)
+    }
+}
+
+extension LoginViewController {
+    private func loginFailureAlert(){
+        let alert = UIAlertController(title: "Login failure alert", message: "Incorrect Email or Password!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }

@@ -8,45 +8,16 @@
 
 import UIKit
 import Alamofire
+import CodableAlamofire
 import SVProgressHUD
 import Kingfisher
 
-struct TVShowItem: Codable {
-    let id: String
-    let title: String
-    let imageUrl: String
-    
-    enum CodingKeys: String, CodingKey {
-        case title
-        case imageUrl
-        case id = "_id"
-    }
-}
-
-struct ShowDetails: Codable {
-    let type: String
-    let title: String
-    let description: String
-    let id: String
-    let likesCount: Int
-    let imageUrl: String
-    
-    enum CodingKeys: String, CodingKey {
-        case type
-        case title
-        case description
-        case id = "_id"
-        case likesCount
-        case imageUrl
-    }
-}
-
 final class HomeViewController: UIViewController {
     
-    // MARK: - Outlets
+    // MARK: - Outlets and variables
     
     @IBOutlet private weak var showTableView: UITableView!
-//    @IBOutlet weak var logoutButton: UIBarButtonItem!
+
     private var items = [TVShowItem]()
     var token: String?
 
@@ -54,10 +25,14 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logout = UIBarButtonItem(image: UIImage(named: "ic-logout.png"), style: .done, target: self, action: #selector(logoutActionHandler))
-        navigationItem.leftBarButtonItem = logout
+        logoutButtonConfigure()
         setupTableView()
         apiCallShows()
+    }
+    
+    private func logoutButtonConfigure(){
+        let logout = UIBarButtonItem(image: UIImage(named: "ic-logout.png"), style: .done, target: self, action: #selector(logoutActionHandler))
+        self.navigationItem.leftBarButtonItem = logout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,9 +46,9 @@ final class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let viewController = storyboard.instantiateViewController( withIdentifier: "LoginViewController") as! LoginViewController
         let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.setViewControllers([viewController], animated: true)
         let share = UIApplication.shared.delegate as? AppDelegate
         share?.window?.rootViewController = navigationController
-        share?.window?.makeKeyAndVisible()
     }
 }
 
@@ -135,6 +110,7 @@ private extension HomeViewController {
 }
 
 // MARK: - UITableView
+
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showTableView.deselectRow(at: indexPath, animated: true)

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class EpisodeCommentsTableViewCell: UITableViewCell {
+final class EpisodeCommentsTableViewCell: UITableViewCell {
+    
+    // MARK: - Outlets
 
     @IBOutlet weak var userEmail: UILabel!
     @IBOutlet weak var userComment: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+
+    // MARK: - Lifecycle methods
 
     override func prepareForReuse() {
         super.prepareForReuse()
