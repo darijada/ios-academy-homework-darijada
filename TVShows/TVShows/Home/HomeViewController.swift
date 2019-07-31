@@ -8,12 +8,13 @@
 
 import UIKit
 import Alamofire
+import CodableAlamofire
 import SVProgressHUD
 import Kingfisher
 
 final class HomeViewController: UIViewController {
     
-    // MARK: - Outlets
+    // MARK: - Outlets and variables
     
     @IBOutlet private weak var showTableView: UITableView!
     private var items = [TVShowItem]()
@@ -30,7 +31,7 @@ final class HomeViewController: UIViewController {
     
     private func logoutButtonConfigure(){
         let logout = UIBarButtonItem(image: UIImage(named: "ic-logout.png"), style: .done, target: self, action: #selector(logoutActionHandler))
-        navigationItem.leftBarButtonItem = logout
+        self.navigationItem.leftBarButtonItem = logout
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +46,8 @@ final class HomeViewController: UIViewController {
         let viewController = storyboard.instantiateViewController( withIdentifier: "LoginViewController") as! LoginViewController
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.setViewControllers([viewController], animated: true)
+        let share = UIApplication.shared.delegate as? AppDelegate
+        share?.window?.rootViewController = navigationController
     }
 }
 
@@ -106,6 +109,7 @@ private extension HomeViewController {
 }
 
 // MARK: - UITableView
+
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showTableView.deselectRow(at: indexPath, animated: true)

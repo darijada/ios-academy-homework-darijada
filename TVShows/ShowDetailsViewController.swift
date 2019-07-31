@@ -15,7 +15,7 @@ final class ShowDetailsViewController: UIViewController {
 
     // MARK: Outlets
     
-    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet private weak var thumbnail: UIImageView!
     @IBOutlet private weak var showNumberOfEpisodes: UILabel!
     @IBOutlet private weak var showEpisodeNumber: UILabel!
     @IBOutlet private weak var seasonEpisodeNumber: UILabel!
@@ -31,6 +31,7 @@ final class ShowDetailsViewController: UIViewController {
     var showTitleInput: String!
     var showDescriptionInput: String!
     var imageURL: String?
+    private var refreshControl: UIRefreshControl?
 
     // MARK: - Lifecycle methods
     
@@ -42,6 +43,7 @@ final class ShowDetailsViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden( true, animated: true)
         setupTableView()
         setImage()
+        addRefreshControl()
     }
     
     private func setImage() {
@@ -53,9 +55,20 @@ final class ShowDetailsViewController: UIViewController {
         thumbnail.kf.setImage(with: url, placeholder: UIImage(named: "TV"))
     }
     
-    private func makeAddEpisodeViewController() -> AddEpViewController {
+    private func makeAddEpisodeViewController() -> AddEpisodeViewController {
         let storyboard: UIStoryboard = UIStoryboard(name: "addEp", bundle: nil)
-        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! AddEpViewController
+        return storyboard.instantiateViewController(withIdentifier: "addEpViewController") as! AddEpisodeViewController
+    }
+    
+    func addRefreshControl(){
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        episodeTableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshList(){
+        showEpisodes()
+        refreshControl?.endRefreshing()
     }
     
     // MARK: - Actions
@@ -98,6 +111,39 @@ private extension ShowDetailsViewController {
                 SVProgressHUD.dismiss()
         }
     }
+    
+    func showEpisodeDetails(episode: EpisodeDetails) {
+        let id = episode.id
+        SVProgressHUD.show()
+        let parameters: [String: String] = [
+        "id": id
+        ]
+        Alamofire
+        .request(
+        "https://api.infinum.academy/api/episodes/\(id)",
+        method: .get,
+        parameters: parameters,
+        encoding: JSONEncoding.default)
+        .validate()
+        .responseDecodableObject(keyPath: "data") {(response: DataResponse<EpisodeDetails>) in
+        switch response.result {
+            case .success(let episodeDetails):
+                let storyboard = UIStoryboard(name: "EpisodeDetails", bundle: nil)
+                let viewController = storyboard.instantiateViewController( withIdentifier: "EpisodeDetailsViewController") as! EpisodeDetailsViewController
+                viewController.token = self.token
+                viewController.id = episodeDetails.id
+                viewController.imageURL = episode.imageUrl
+                viewController.epTitle = episodeDetails.title
+                viewController.epDescription = episodeDetails.description
+                viewController.epNumber = episodeDetails.episodeNumber
+                viewController.epSeason = episodeDetails.season
+                self.navigationController?.pushViewController(viewController, animated: true)
+            case .failure(let error):
+                print("API failure: \(error)")
+        }
+        SVProgressHUD.dismiss()
+        }
+    }
 }
 
 // MARK: - UITableView
@@ -107,6 +153,7 @@ extension ShowDetailsViewController: UITableViewDelegate {
         episodeTableView.deselectRow(at: indexPath, animated: true)
         let episode = episodes[indexPath.row]
         print("Selected Episode: \(episode)")
+        showEpisodeDetails(episode: episode)
     }
 }
 
@@ -134,7 +181,7 @@ private extension ShowDetailsViewController {
     }
 }
 
-extension ShowDetailsViewController: addEpViewControllerDelegate {
+extension ShowDetailsViewController: AddEpisodeViewControllerDelegate {
     func didAddNewEpisode() {
         showEpisodes()
     }

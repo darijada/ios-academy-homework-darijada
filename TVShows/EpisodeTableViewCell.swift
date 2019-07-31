@@ -8,14 +8,14 @@
 
 import UIKit
 
-class EpisodeTableViewCell: UITableViewCell {
+final class EpisodeTableViewCell: UITableViewCell {
+
+    // MARK: Outlets
 
     @IBOutlet private weak var episodeTitle: UILabel!
-    @IBOutlet weak var seasonNumber: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+    @IBOutlet private weak var seasonNumber: UILabel!
+
+    // MARK: - Lifecycle methods
 
     override func prepareForReuse() {
         super.prepareForReuse()

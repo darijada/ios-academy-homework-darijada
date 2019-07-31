@@ -11,20 +11,18 @@ import Kingfisher
 
 final class TVShowTableViewCell: UITableViewCell {
 
+    // MARK: - Outlets and variables
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    //var imageUrl: String?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     override func prepareForReuse() {
         super.prepareForReuse()
         titleLabel.text = nil
         thumbnailImageView.image = nil
     }
+    
+    // MARK: - Lifecycle methods
     
     func configure(with item: TVShowItem) {
         titleLabel.text = item.title

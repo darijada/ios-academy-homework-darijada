@@ -35,12 +35,10 @@ final class LoginViewController: UIViewController {
   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         guard
             let email = UserDefaults.standard.value(forKey: "email") as? String,
             let password = UserDefaults.standard.value(forKey: "password") as? String
         else { return }
-        
         emailTextField.text = email
         passwordTextField.text = password
         logInButtonActionHandler()
@@ -48,10 +46,10 @@ final class LoginViewController: UIViewController {
   
     // MARK: - Actions
     
-    @IBAction private func rememberMeTapped(_ sender: Any) {
+    @IBAction func rememberMeTapped(_ sender: Any) {
         checkmarkButton.isSelected.toggle()
     }
-    
+
     @IBAction private func logInButtonActionHandler() {
         guard let userEmail = emailTextField.text else { return }
         guard let userPassword = passwordTextField.text else { return }
@@ -151,7 +149,7 @@ private extension LoginViewController {
     }
 }
 
-extension UIButton{
+extension UIButton {
     func pulsate(){
         let pulse = CASpringAnimation(keyPath: "transform.scale")
         pulse.duration = 0.6
@@ -173,5 +171,4 @@ extension LoginViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
 }
