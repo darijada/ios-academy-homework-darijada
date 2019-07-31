@@ -46,7 +46,7 @@ final class ShowDetailsViewController: UIViewController {
         addRefreshControl()
     }
     
-    func setImage() {
+    private func setImage() {
         guard
             let imageUrl = imageURL,
             !imageUrl.isEmpty

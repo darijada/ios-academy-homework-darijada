@@ -17,7 +17,6 @@ final class HomeViewController: UIViewController {
     // MARK: - Outlets and variables
     
     @IBOutlet private weak var showTableView: UITableView!
-
     private var items = [TVShowItem]()
     var token: String?
 
@@ -55,7 +54,7 @@ final class HomeViewController: UIViewController {
 private extension HomeViewController {
     func apiCallShows() {
         SVProgressHUD.show()
-        guard let token = self.token else { return }
+        guard let token = token else { return }
         let headers = ["Authorization": "token \(token)"]
         Alamofire
             .request(
